@@ -1,0 +1,4 @@
+These are the files to update from the database version tagged at
+v0. If many more releases are made, the upgrade scripts will probably
+be re-organized, and if you're many versions out of date, you'll
+probably have an easier time re-creating the database from scratch.
