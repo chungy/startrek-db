@@ -11,3 +11,5 @@ CREATE OR REPLACE VIEW tos_bluray AS
     series s
   WHERE (((((((ep.id = mve.episode) AND (ms.id = mv.media_set)) AND (ms.type = mt.id)) AND (mve.volume = mv.id)) AND (s.id = ep.series)) AND (s.title = 'Star Trek: The Original Series'::text)) AND (mt.type = 'Blu-ray'::text))
   ORDER BY ep.airdate, ep.production_code;
+
+ALTER TABLE medium_type ADD CONSTRAINT type_unique UNIQUE (type);

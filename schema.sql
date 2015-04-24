@@ -373,6 +373,14 @@ ALTER TABLE ONLY series
 
 
 --
+-- Name: type_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY medium_type
+    ADD CONSTRAINT type_unique UNIQUE (type);
+
+
+--
 -- Name: unique_vol_ep; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
