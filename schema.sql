@@ -81,10 +81,9 @@ CREATE VIEW cont AS
  SELECT episode.id,
     episode.title,
     episode.airdate,
-    episode.season,
     episode.episode_number,
-    episode.production_code,
-    episode.stardate
+    episode.stardate,
+    episode.vignette
    FROM episode
   WHERE (episode.series = ( SELECT series.id
            FROM series
