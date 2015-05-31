@@ -34,7 +34,6 @@ COPY episode (id, series, title, airdate, remastered_airdate, season, episode_nu
 840c815b-5079-4599-afe9-76b52c18c27e	51994c36-6748-4297-a179-efc44599cd21	Pilgrim of Eternity	2013-05-26	\N	\N	1	\N	6147.3	\N	f
 54ac4fbc-9c31-4f6b-bf5d-468756c9ab63	51994c36-6748-4297-a179-efc44599cd21	Lolani	2014-02-08	\N	\N	2	\N	6154.1	\N	f
 16048761-8bc2-4613-84cb-2a52256138a0	51994c36-6748-4297-a179-efc44599cd21	Fairest of Them All	2014-06-15	\N	\N	3	\N	\N	\N	f
-c68975dd-0d0a-4302-a50a-9a444978b884	51994c36-6748-4297-a179-efc44599cd21	The White Iris	2015-05-29	\N	\N	4	\N	\N	\N	f
 aba74955-c297-47b3-acf2-7d152f3305ed	51994c36-6748-4297-a179-efc44599cd21	Turnabout Intruder	2012-07-31	\N	\N	1	\N	5928.5	\N	t
 3304c6bb-7b4e-47f0-8bd1-7ea1af2e72d7	51994c36-6748-4297-a179-efc44599cd21	You've Got the Conn	2012-09-30	\N	\N	2	\N	\N	\N	t
 618ee313-ddac-4633-a4c3-db97dac9dc7f	51994c36-6748-4297-a179-efc44599cd21	Happy Birthday, Scotty	2012-11-30	\N	\N	3	\N	\N	\N	t
@@ -756,6 +755,7 @@ fb906c07-ecbd-4c74-a2df-6e5dfdc00454	07858cb3-060a-421a-9c44-6028fb13b9de	Face o
 cac49a13-bd0e-44a9-a8e1-b43212be81ab	b71e1b59-1560-4d80-8f71-2d924a8edb9a	The Voyager Conspiracy	1999-11-24	\N	6	9	229	53329.0	\N	\N
 28a19afd-ad7d-4c57-ae80-5799ee693192	badb4eb9-d493-464f-94b8-21334d2157e1	Where No Man Has Gone Before (pilot cut)	\N	\N	\N	\N	6149-02	1312.4	\N	\N
 a56e5f53-1f64-4c3e-b582-c5a8763409c3	badb4eb9-d493-464f-94b8-21334d2157e1	The Cage (extended)	1988-10-04	\N	\N	\N	6149-01	\N	\N	\N
+c68975dd-0d0a-4302-a50a-9a444978b884	51994c36-6748-4297-a179-efc44599cd21	The White Iris	2015-05-29	\N	\N	4	\N	6182.3	\N	f
 \.
 
 

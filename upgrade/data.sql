@@ -1,5 +1,6 @@
 UPDATE episode SET airdate = '1988-10-04' WHERE id = 'a56e5f53-1f64-4c3e-b582-c5a8763409c3';
 UPDATE episode SET airdate = NULL WHERE id = '13610fe3-87b8-482d-824b-31ed99a4c395';
+UPDATE episode SET stardate = 6182.3 WHERE id = 'c68975dd-0d0a-4302-a50a-9a444978b884';
 
 INSERT INTO medium_type (id, type) VALUES('e586af79-3b61-4814-9266-0c980745531e', 'HD DVD');
 
