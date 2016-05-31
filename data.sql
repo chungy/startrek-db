@@ -2,12 +2,16 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
+SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
@@ -460,6 +464,8 @@ c5554b6a-e374-43f6-ae78-b6cfb9b6f4e1	711a7a2e-2fad-4a85-b07e-14077db05150	In the
 abb6e54c-21c9-4213-ac47-21b64e09c4a9	711a7a2e-2fad-4a85-b07e-14077db05150	Profit and Lace	1998-05-13	\N	6	23	40510-547	\N	\N	\N
 32c73a95-9f30-4a07-af18-3c09a624f758	711a7a2e-2fad-4a85-b07e-14077db05150	Time's Orphan	1998-05-20	\N	6	24	40510-548	\N	\N	\N
 743e5d49-78d7-4fad-acc6-63b5868b41ce	711a7a2e-2fad-4a85-b07e-14077db05150	The Sound of Her Voice	1998-06-10	\N	6	25	40510-549	51948.3	\N	\N
+a51c9a89-4a20-428f-b39b-8ee951640040	b71e1b59-1560-4d80-8f71-2d924a8edb9a	Warlord	1996-11-20	\N	3	10	152	50348.1	\N	\N
+33d3922d-0229-4180-b158-f86d6191c8af	e3656426-3669-442f-95ba-5daa5838270f	Cogenitor	2003-04-30	\N	2	22	48	\N	\N	\N
 a073e3f0-ecc9-4d45-9674-a44d806150b9	711a7a2e-2fad-4a85-b07e-14077db05150	Tears of the Prophets	1998-06-17	\N	6	26	40510-550	\N	\N	\N
 84de9761-2fd5-4c85-8cec-662630561645	711a7a2e-2fad-4a85-b07e-14077db05150	Image in the Sand	1998-09-30	\N	7	1	40510-551	\N	\N	\N
 bccc38e6-c4b7-4ce8-8334-c8f88c80816a	711a7a2e-2fad-4a85-b07e-14077db05150	Shadows and Symbols	1998-10-07	\N	7	2	40510-552	52152.6	\N	\N
@@ -535,7 +541,6 @@ da53ec17-4e2b-41fd-ba84-cd6c8a7a2ca9	b71e1b59-1560-4d80-8f71-2d924a8edb9a	Rememb
 abef00e9-5709-451c-b681-4cd3e8035410	b71e1b59-1560-4d80-8f71-2d924a8edb9a	Sacred Ground	1996-10-30	\N	3	7	143	50063.2	\N	\N
 043a4dc9-aae4-4912-80fb-6562fdd264fd	b71e1b59-1560-4d80-8f71-2d924a8edb9a	Future's End	1996-11-06	\N	3	8	150	50312.5	\N	\N
 31086b21-1b47-41fa-9a05-fe3102ba59f2	b71e1b59-1560-4d80-8f71-2d924a8edb9a	Future's End, Part II	1996-11-13	\N	3	9	151	50312.5	\N	\N
-a51c9a89-4a20-428f-b39b-8ee951640040	b71e1b59-1560-4d80-8f71-2d924a8edb9a	Warlord	1996-11-20	\N	3	10	152	50348.1	\N	\N
 cfa6db29-58f0-43da-9f81-eac74d1decb9	e3656426-3669-442f-95ba-5daa5838270f	Judgment	2003-04-09	\N	2	19	45	\N	\N	\N
 8ab258b4-9137-47bb-9507-c30404ff0800	b71e1b59-1560-4d80-8f71-2d924a8edb9a	The Q and the Grey	1996-11-27	\N	3	11	153	50384.2	\N	\N
 fa975518-dbf5-48be-af8d-c2b8054ab0e2	b71e1b59-1560-4d80-8f71-2d924a8edb9a	Macrocosm	1996-12-11	\N	3	12	154	50425.1	\N	\N
@@ -696,7 +701,6 @@ f693e8b7-fd0f-4340-a80c-152a46aad044	e3656426-3669-442f-95ba-5daa5838270f	Dawn	2
 17814123-6cc9-438c-990d-cce9a12d413f	e3656426-3669-442f-95ba-5daa5838270f	The Crossing	2003-04-02	\N	2	18	44	\N	\N	\N
 ee14dc6d-c09a-45c0-a02e-e1ef068b851a	e3656426-3669-442f-95ba-5daa5838270f	Horizon	2003-04-16	\N	2	20	46	\N	2153-01-10	\N
 b27b83ce-83a6-4396-b6b6-fb5483e26ab5	e3656426-3669-442f-95ba-5daa5838270f	The Breach	2003-04-23	\N	2	21	47	\N	\N	\N
-33d3922d-0229-4180-b158-f86d6191c8af	e3656426-3669-442f-95ba-5daa5838270f	Cogenitor	2003-04-30	\N	2	22	48	\N	\N	\N
 c7712c6e-9550-406d-b9e0-828f1229b83e	e3656426-3669-442f-95ba-5daa5838270f	Regeneration	2003-05-07	\N	2	23	49	\N	2153-03-01	\N
 82fe39b0-40e8-48a7-b3f9-c1562657d4e0	e3656426-3669-442f-95ba-5daa5838270f	First Flight	2003-05-14	\N	2	24	50	\N	\N	\N
 51596326-98f9-451d-b05d-809d57a99eb2	e3656426-3669-442f-95ba-5daa5838270f	Bounty	2003-05-14	\N	2	25	51	\N	2153-03-21	\N
@@ -757,6 +761,7 @@ cac49a13-bd0e-44a9-a8e1-b43212be81ab	b71e1b59-1560-4d80-8f71-2d924a8edb9a	The Vo
 a56e5f53-1f64-4c3e-b582-c5a8763409c3	badb4eb9-d493-464f-94b8-21334d2157e1	The Cage (extended)	1988-10-04	\N	\N	\N	6149-01	\N	\N	\N
 c68975dd-0d0a-4302-a50a-9a444978b884	51994c36-6748-4297-a179-efc44599cd21	The White Iris	2015-05-29	\N	\N	4	\N	6182.3	\N	f
 ae4df5d2-5456-48f4-ad7e-8ab7bd54875b	51994c36-6748-4297-a179-efc44599cd21	Divided We Stand	2015-09-26	\N	\N	5	\N	6202.1	\N	f
+6e6f6f0d-d6ef-411b-a092-9ad5d164b6fa	51994c36-6748-4297-a179-efc44599cd21	Come Not Between the Dragons	2016-05-28	\N	\N	6	\N	6257.4	\N	f
 \.
 
 
