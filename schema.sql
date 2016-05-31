@@ -2,40 +2,16 @@
 -- PostgreSQL database dump
 --
 
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
--- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
-
-
---
--- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
-
+SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
@@ -44,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: episode; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: episode; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE episode (
@@ -63,7 +39,51 @@ CREATE TABLE episode (
 
 
 --
--- Name: series; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: media_set; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE media_set (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    series uuid,
+    type uuid,
+    season smallint
+);
+
+
+--
+-- Name: medium_type; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE medium_type (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    type text NOT NULL
+);
+
+
+--
+-- Name: medium_volume; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE medium_volume (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    media_set uuid,
+    sequence smallint NOT NULL
+);
+
+
+--
+-- Name: medium_volume_episode; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE medium_volume_episode (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    volume uuid,
+    episode uuid
+);
+
+
+--
+-- Name: series; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE series (
@@ -71,6 +91,32 @@ CREATE TABLE series (
     title text NOT NULL,
     aired daterange
 );
+
+
+--
+-- Name: tos_bluray; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW tos_bluray AS
+ SELECT ep.id,
+    ep.title,
+    ms.season,
+    mv.sequence AS disc
+   FROM episode ep,
+    media_set ms,
+    medium_type mt,
+    medium_volume mv,
+    medium_volume_episode mve,
+    series s
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Original Series'::text) AND (mt.type = 'Blu-ray'::text))
+  ORDER BY ep.airdate, ep.production_code;
+
+
+--
+-- Name: VIEW tos_bluray; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON VIEW tos_bluray IS 'The TOS Blu-ray set released in 2009, containing the remastered versions of all the episodes in 1080p and 7.1 surround sound.';
 
 
 --
@@ -131,51 +177,7 @@ CREATE VIEW ent AS
 
 
 --
--- Name: media_set; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE media_set (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
-    series uuid,
-    type uuid,
-    season smallint
-);
-
-
---
--- Name: medium_type; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE medium_type (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
-    type text NOT NULL
-);
-
-
---
--- Name: medium_volume; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE medium_volume (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
-    media_set uuid,
-    sequence smallint NOT NULL
-);
-
-
---
--- Name: medium_volume_episode; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE medium_volume_episode (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
-    volume uuid,
-    episode uuid
-);
-
-
---
--- Name: movie; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: movie; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE movie (
@@ -239,7 +241,7 @@ CREATE VIEW tng_dvd AS
     medium_volume mv,
     medium_volume_episode mve,
     series s
-  WHERE (((((((ep.id = mve.episode) AND (ms.id = mv.media_set)) AND (ms.type = mt.id)) AND (mve.volume = mv.id)) AND (s.id = ep.series)) AND (s.title = 'Star Trek: The Next Generation'::text)) AND (mt.type = 'DVD'::text))
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Next Generation'::text) AND (mt.type = 'DVD'::text))
   ORDER BY ep.airdate;
 
 
@@ -271,32 +273,6 @@ CREATE VIEW tos AS
 
 
 --
--- Name: tos_bluray; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW tos_bluray AS
- SELECT ep.id,
-    ep.title,
-    ms.season,
-    mv.sequence AS disc
-   FROM episode ep,
-    media_set ms,
-    medium_type mt,
-    medium_volume mv,
-    medium_volume_episode mve,
-    series s
-  WHERE (((((((ep.id = mve.episode) AND (ms.id = mv.media_set)) AND (ms.type = mt.id)) AND (mve.volume = mv.id)) AND (s.id = ep.series)) AND (s.title = 'Star Trek: The Original Series'::text)) AND (mt.type = 'Blu-ray'::text))
-  ORDER BY ep.airdate, ep.production_code;
-
-
---
--- Name: VIEW tos_bluray; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON VIEW tos_bluray IS 'The TOS Blu-ray set released in 2009, containing the remastered versions of all the episodes in 1080p and 7.1 surround sound.';
-
-
---
 -- Name: tos_hddvd; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -311,7 +287,7 @@ CREATE VIEW tos_hddvd AS
     medium_volume mv,
     medium_volume_episode mve,
     series s
-  WHERE (((((((ep.id = mve.episode) AND (ms.id = mv.media_set)) AND (ms.type = mt.id)) AND (mve.volume = mv.id)) AND (s.id = ep.series)) AND (s.title = 'Star Trek: The Original Series'::text)) AND (mt.type = 'HD DVD'::text))
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Original Series'::text) AND (mt.type = 'HD DVD'::text))
   ORDER BY ep.airdate;
 
 
@@ -335,7 +311,7 @@ CREATE VIEW voy AS
 
 
 --
--- Name: episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY episode
@@ -343,7 +319,7 @@ ALTER TABLE ONLY episode
 
 
 --
--- Name: media_set_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: media_set_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY media_set
@@ -351,7 +327,7 @@ ALTER TABLE ONLY media_set
 
 
 --
--- Name: medium_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: medium_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_type
@@ -359,7 +335,7 @@ ALTER TABLE ONLY medium_type
 
 
 --
--- Name: medium_volume_episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: medium_volume_episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_volume_episode
@@ -367,7 +343,7 @@ ALTER TABLE ONLY medium_volume_episode
 
 
 --
--- Name: medium_volume_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: medium_volume_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_volume
@@ -375,7 +351,7 @@ ALTER TABLE ONLY medium_volume
 
 
 --
--- Name: movies_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: movies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY movie
@@ -383,7 +359,7 @@ ALTER TABLE ONLY movie
 
 
 --
--- Name: series_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: series_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY series
@@ -391,7 +367,7 @@ ALTER TABLE ONLY series
 
 
 --
--- Name: type_unique; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: type_unique; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_type
@@ -399,7 +375,7 @@ ALTER TABLE ONLY medium_type
 
 
 --
--- Name: unique_vol_ep; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: unique_vol_ep; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_volume_episode
