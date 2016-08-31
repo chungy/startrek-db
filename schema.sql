@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.3
--- Dumped by pg_dump version 9.5.3
+-- Dumped from database version 9.5.4
+-- Dumped by pg_dump version 9.5.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -91,6 +91,25 @@ CREATE TABLE series (
     title text NOT NULL,
     aired daterange
 );
+
+
+--
+-- Name: tng_bluray; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW tng_bluray AS
+ SELECT ep.id,
+    ep.title,
+    ms.season,
+    mv.sequence AS disc
+   FROM episode ep,
+    media_set ms,
+    medium_type mt,
+    medium_volume mv,
+    medium_volume_episode mve,
+    series s
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Next Generation'::text) AND (mt.type = 'Blu-ray'::text))
+  ORDER BY ep.airdate;
 
 
 --
