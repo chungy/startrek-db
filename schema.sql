@@ -2,11 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.4
--- Dumped by pg_dump version 9.5.4
+-- Dumped from database version 9.6.2
+-- Dumped by pg_dump version 9.6.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -66,7 +67,7 @@ CREATE TABLE medium_type (
 
 CREATE TABLE medium_volume (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    media_set uuid,
+    media_set uuid NOT NULL,
     sequence smallint NOT NULL
 );
 
@@ -77,8 +78,8 @@ CREATE TABLE medium_volume (
 
 CREATE TABLE medium_volume_episode (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    volume uuid,
-    episode uuid
+    volume uuid NOT NULL,
+    episode uuid NOT NULL
 );
 
 
@@ -110,6 +111,13 @@ CREATE VIEW tng_bluray AS
     series s
   WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Next Generation'::text) AND (mt.type = 'Blu-ray'::text))
   ORDER BY ep.airdate;
+
+
+--
+-- Name: VIEW tng_bluray; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON VIEW tng_bluray IS 'The TNG Blu-ray set released from 2012 to 2015, containing remastered versions of all episodes in 1080p and 7.1 surround sound.';
 
 
 --
@@ -292,6 +300,32 @@ CREATE VIEW tos AS
 
 
 --
+-- Name: tos_dvdr; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW tos_dvdr AS
+ SELECT ep.id,
+    ep.title,
+    ms.season,
+    mv.sequence AS disc
+   FROM episode ep,
+    media_set ms,
+    medium_type mt,
+    medium_volume mv,
+    medium_volume_episode mve,
+    series s
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Original Series'::text) AND (mt.type = 'DVD-R'::text))
+  ORDER BY ep.airdate;
+
+
+--
+-- Name: VIEW tos_dvdr; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON VIEW tos_dvdr IS 'The TOS DVD set released in 2008 and 2009, containing the remastered episodes in 480i and 5.1 surround sound, with only the enhanced effects.';
+
+
+--
 -- Name: tos_hddvd; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -308,6 +342,13 @@ CREATE VIEW tos_hddvd AS
     series s
   WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Original Series'::text) AND (mt.type = 'HD DVD'::text))
   ORDER BY ep.airdate;
+
+
+--
+-- Name: VIEW tos_hddvd; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON VIEW tos_hddvd IS 'TOS Season 1 released on HD DVD in 2007, shortly before the format''s cancellation and Blu-ray winning the HD format war.  Contains all Season 1 episodes in remastered 1080p and 5.1 surround sound, as well as DVD versions of the same episodes in 480i.  Unlike the Blu-ray release, these discs contain only the enhanced effects.';
 
 
 --
@@ -330,7 +371,7 @@ CREATE VIEW voy AS
 
 
 --
--- Name: episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: episode episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY episode
@@ -338,7 +379,7 @@ ALTER TABLE ONLY episode
 
 
 --
--- Name: media_set_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: media_set media_set_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY media_set
@@ -346,7 +387,7 @@ ALTER TABLE ONLY media_set
 
 
 --
--- Name: medium_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: medium_type medium_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_type
@@ -354,7 +395,7 @@ ALTER TABLE ONLY medium_type
 
 
 --
--- Name: medium_volume_episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: medium_volume_episode medium_volume_episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_volume_episode
@@ -362,7 +403,7 @@ ALTER TABLE ONLY medium_volume_episode
 
 
 --
--- Name: medium_volume_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: medium_volume medium_volume_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_volume
@@ -370,7 +411,7 @@ ALTER TABLE ONLY medium_volume
 
 
 --
--- Name: movies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: movie movies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY movie
@@ -378,7 +419,7 @@ ALTER TABLE ONLY movie
 
 
 --
--- Name: series_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: series series_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY series
@@ -386,7 +427,7 @@ ALTER TABLE ONLY series
 
 
 --
--- Name: type_unique; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: medium_type type_unique; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_type
@@ -394,7 +435,7 @@ ALTER TABLE ONLY medium_type
 
 
 --
--- Name: unique_vol_ep; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: medium_volume_episode unique_vol_ep; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_volume_episode
@@ -402,7 +443,7 @@ ALTER TABLE ONLY medium_volume_episode
 
 
 --
--- Name: episode_series_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: episode episode_series_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY episode
@@ -410,7 +451,7 @@ ALTER TABLE ONLY episode
 
 
 --
--- Name: media_set_series_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: media_set media_set_series_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY media_set
@@ -418,7 +459,7 @@ ALTER TABLE ONLY media_set
 
 
 --
--- Name: media_set_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: media_set media_set_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY media_set
@@ -426,7 +467,7 @@ ALTER TABLE ONLY media_set
 
 
 --
--- Name: medium_volume_episode_episode_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: medium_volume_episode medium_volume_episode_episode_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_volume_episode
@@ -434,7 +475,7 @@ ALTER TABLE ONLY medium_volume_episode
 
 
 --
--- Name: medium_volume_episode_volume_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: medium_volume_episode medium_volume_episode_volume_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_volume_episode
@@ -442,7 +483,7 @@ ALTER TABLE ONLY medium_volume_episode
 
 
 --
--- Name: medium_volume_media_set_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: medium_volume medium_volume_media_set_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY medium_volume
