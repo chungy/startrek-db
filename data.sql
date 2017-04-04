@@ -764,7 +764,7 @@ cac49a13-bd0e-44a9-a8e1-b43212be81ab	b71e1b59-1560-4d80-8f71-2d924a8edb9a	The Vo
 a56e5f53-1f64-4c3e-b582-c5a8763409c3	badb4eb9-d493-464f-94b8-21334d2157e1	The Cage (extended)	1988-10-04	\N	\N	\N	6149-01	\N	\N	\N
 c68975dd-0d0a-4302-a50a-9a444978b884	51994c36-6748-4297-a179-efc44599cd21	The White Iris	2015-05-29	\N	\N	4	\N	6182.3	\N	f
 ae4df5d2-5456-48f4-ad7e-8ab7bd54875b	51994c36-6748-4297-a179-efc44599cd21	Divided We Stand	2015-09-26	\N	\N	5	\N	6202.1	\N	f
-bf49d725-77c4-44ac-802e-65e1efc33ab8	51994c36-6748-4297-a179-efc44599cd21	Still Treads the Shadow	2017-04-01	\N	\N	8	\N	\N	\N	f
+bf49d725-77c4-44ac-802e-65e1efc33ab8	51994c36-6748-4297-a179-efc44599cd21	Still Treads the Shadow	2017-04-01	\N	\N	8	\N	6563.4	\N	f
 \.
 
 
