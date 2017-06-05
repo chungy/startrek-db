@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.2
+-- Dumped from database version 9.6.3
+-- Dumped by pg_dump version 9.6.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1532,9 +1532,9 @@ b2052c4a-97e5-4c19-951f-590290e708c1	Star Trek III: The Search for Spock	1984-06
 8103e04a-db1c-421d-bd9c-1a49d8ef8f19	Star Trek: Nemesis	2002-12-13	56844.9
 a86384e6-420a-488d-a6bf-4fd70cd3c4df	Star Trek	2009-05-08	2258.42
 aca48b16-31ad-4ec5-8ad1-d0ddcbf433d4	Star Trek Into Darkness	2013-05-16	2259.55
-43584f2f-efbf-422b-ae68-3acaa0eea64d	Star Trek: Insurrection	1998-12-11	52200.0
 8b7303fc-c244-43af-8271-789dde6b37dd	Star Trek IV: The Voyage Home	1986-11-26	8390.0
 cad4e76a-4443-4b2d-bdf1-5fbe37365269	Star Trek Beyond	2016-07-22	2263.02
+43584f2f-efbf-422b-ae68-3acaa0eea64d	Star Trek: Insurrection	1998-12-11	\N
 \.
 
 
