@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.2
--- Dumped by pg_dump version 9.6.2
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 9.6.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -37,6 +37,93 @@ CREATE TABLE episode (
     date date,
     vignette boolean
 );
+
+
+--
+-- Name: series; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE series (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    title text NOT NULL,
+    aired daterange
+);
+
+
+--
+-- Name: cont; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW cont AS
+ SELECT episode.id,
+    episode.title,
+    episode.airdate,
+    episode.episode_number,
+    episode.stardate,
+    episode.vignette
+   FROM episode
+  WHERE (episode.series = ( SELECT series.id
+           FROM series
+          WHERE (series.title = 'Star Trek Continues'::text)))
+  ORDER BY episode.airdate;
+
+
+--
+-- Name: dis; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW dis AS
+ SELECT episode.id,
+    episode.title,
+    episode.airdate,
+    episode.season,
+    episode.episode_number,
+    episode.production_code,
+    episode.stardate
+   FROM episode
+  WHERE (episode.series = ( SELECT series.id
+           FROM series
+          WHERE (series.title = 'Star Trek: Discovery'::text)))
+  ORDER BY episode.airdate, episode.episode_number;
+
+
+--
+-- Name: ds9; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW ds9 AS
+ SELECT episode.id,
+    episode.title,
+    episode.airdate,
+    episode.season,
+    episode.episode_number,
+    episode.production_code,
+    episode.stardate
+   FROM episode
+  WHERE (episode.series = ( SELECT series.id
+           FROM series
+          WHERE (series.title = 'Star Trek: Deep Space Nine'::text)))
+  ORDER BY episode.airdate;
+
+
+--
+-- Name: ent; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW ent AS
+ SELECT episode.id,
+    episode.title,
+    episode.airdate,
+    episode.season,
+    episode.episode_number,
+    episode.production_code,
+    episode.stardate,
+    episode.date
+   FROM episode
+  WHERE (episode.series = ( SELECT series.id
+           FROM series
+          WHERE (series.title = 'Star Trek: Enterprise'::text)))
+  ORDER BY episode.airdate;
 
 
 --
@@ -81,126 +168,6 @@ CREATE TABLE medium_volume_episode (
     volume uuid NOT NULL,
     episode uuid NOT NULL
 );
-
-
---
--- Name: series; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE series (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
-    title text NOT NULL,
-    aired daterange
-);
-
-
---
--- Name: tng_bluray; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW tng_bluray AS
- SELECT ep.id,
-    ep.title,
-    ms.season,
-    mv.sequence AS disc
-   FROM episode ep,
-    media_set ms,
-    medium_type mt,
-    medium_volume mv,
-    medium_volume_episode mve,
-    series s
-  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Next Generation'::text) AND (mt.type = 'Blu-ray'::text))
-  ORDER BY ep.airdate;
-
-
---
--- Name: VIEW tng_bluray; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON VIEW tng_bluray IS 'The TNG Blu-ray set released from 2012 to 2015, containing remastered versions of all episodes in 1080p and 7.1 surround sound.';
-
-
---
--- Name: tos_bluray; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW tos_bluray AS
- SELECT ep.id,
-    ep.title,
-    ms.season,
-    mv.sequence AS disc
-   FROM episode ep,
-    media_set ms,
-    medium_type mt,
-    medium_volume mv,
-    medium_volume_episode mve,
-    series s
-  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Original Series'::text) AND (mt.type = 'Blu-ray'::text))
-  ORDER BY ep.airdate, ep.production_code;
-
-
---
--- Name: VIEW tos_bluray; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON VIEW tos_bluray IS 'The TOS Blu-ray set released in 2009, containing the remastered versions of all the episodes in 1080p and 7.1 surround sound.';
-
-
---
--- Name: cont; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW cont AS
- SELECT episode.id,
-    episode.title,
-    episode.airdate,
-    episode.episode_number,
-    episode.stardate,
-    episode.vignette
-   FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek Continues'::text)))
-  ORDER BY episode.airdate;
-
-
---
--- Name: ds9; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW ds9 AS
- SELECT episode.id,
-    episode.title,
-    episode.airdate,
-    episode.season,
-    episode.episode_number,
-    episode.production_code,
-    episode.stardate
-   FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek: Deep Space Nine'::text)))
-  ORDER BY episode.airdate;
-
-
---
--- Name: ent; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW ent AS
- SELECT episode.id,
-    episode.title,
-    episode.airdate,
-    episode.season,
-    episode.episode_number,
-    episode.production_code,
-    episode.stardate,
-    episode.date
-   FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek: Enterprise'::text)))
-  ORDER BY episode.airdate;
 
 
 --
@@ -254,6 +221,32 @@ CREATE VIEW tng AS
 
 
 --
+-- Name: tng_bluray; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW tng_bluray AS
+ SELECT ep.id,
+    ep.title,
+    ms.season,
+    mv.sequence AS disc
+   FROM episode ep,
+    media_set ms,
+    medium_type mt,
+    medium_volume mv,
+    medium_volume_episode mve,
+    series s
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Next Generation'::text) AND (mt.type = 'Blu-ray'::text))
+  ORDER BY ep.airdate;
+
+
+--
+-- Name: VIEW tng_bluray; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON VIEW tng_bluray IS 'The TNG Blu-ray set released from 2012 to 2015, containing remastered versions of all episodes in 1080p and 7.1 surround sound.';
+
+
+--
 -- Name: tng_dvd; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -297,6 +290,32 @@ CREATE VIEW tos AS
            FROM series
           WHERE (series.title = 'Star Trek: The Original Series'::text)))
   ORDER BY episode.airdate;
+
+
+--
+-- Name: tos_bluray; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW tos_bluray AS
+ SELECT ep.id,
+    ep.title,
+    ms.season,
+    mv.sequence AS disc
+   FROM episode ep,
+    media_set ms,
+    medium_type mt,
+    medium_volume mv,
+    medium_volume_episode mve,
+    series s
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Original Series'::text) AND (mt.type = 'Blu-ray'::text))
+  ORDER BY ep.airdate, ep.production_code;
+
+
+--
+-- Name: VIEW tos_bluray; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON VIEW tos_bluray IS 'The TOS Blu-ray set released in 2009, containing the remastered versions of all the episodes in 1080p and 7.1 surround sound.';
 
 
 --
