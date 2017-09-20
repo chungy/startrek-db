@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.3
--- Dumped by pg_dump version 9.6.3
+-- Dumped from database version 9.6.5
+-- Dumped by pg_dump version 9.6.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -28,6 +28,7 @@ e3656426-3669-442f-95ba-5daa5838270f	Star Trek: Enterprise	[2001-09-26,2005-05-1
 51994c36-6748-4297-a179-efc44599cd21	Star Trek Continues	[2013-05-26,)
 badb4eb9-d493-464f-94b8-21334d2157e1	Star Trek: The Original Series	[1966-09-08,1969-06-04)
 e3ca03f7-c94d-4847-8cb1-9f19ba99bd43	Star Trek: The Animated Series	[1973-09-08,1974-10-13)
+475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Star Trek: Discovery	[2017-09-24,)
 \.
 
 
@@ -766,6 +767,10 @@ c68975dd-0d0a-4302-a50a-9a444978b884	51994c36-6748-4297-a179-efc44599cd21	The Wh
 ae4df5d2-5456-48f4-ad7e-8ab7bd54875b	51994c36-6748-4297-a179-efc44599cd21	Divided We Stand	2015-09-26	\N	\N	5	\N	6202.1	\N	f
 bf49d725-77c4-44ac-802e-65e1efc33ab8	51994c36-6748-4297-a179-efc44599cd21	Still Treads the Shadow	2017-04-01	\N	\N	8	\N	6563.4	\N	f
 b2c05a5b-5cc6-467c-b908-caa3d27259a0	51994c36-6748-4297-a179-efc44599cd21	What Ships Are For	2017-07-30	\N	\N	9	\N	6892.3	\N	f
+015f97ba-5836-415a-be4f-3b5a0a6238f5	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Vulcan Hello	2017-09-24	\N	1	1	101	\N	\N	\N
+f4cd31ce-7793-476d-8cf6-a543c03ed76d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Battle at the Binary Stars	2017-09-24	\N	1	2	102	\N	\N	\N
+0230dbe0-3471-4da0-937a-8060a53d189d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Context Is for Kings	2017-10-01	\N	1	3	103	\N	\N	\N
+4adb734f-5222-4227-89b7-c3124a6bdf8f	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Butcher's Knife Cares Not for the Lamb's Cry	2017-10-08	\N	1	4	104	\N	\N	\N
 \.
 
 
