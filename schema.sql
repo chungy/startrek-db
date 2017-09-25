@@ -79,7 +79,8 @@ CREATE VIEW dis AS
     episode.season,
     episode.episode_number,
     episode.production_code,
-    episode.stardate
+    episode.stardate,
+    episode.date
    FROM episode
   WHERE (episode.series = ( SELECT series.id
            FROM series

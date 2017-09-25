@@ -764,13 +764,13 @@ c68975dd-0d0a-4302-a50a-9a444978b884	51994c36-6748-4297-a179-efc44599cd21	The Wh
 ae4df5d2-5456-48f4-ad7e-8ab7bd54875b	51994c36-6748-4297-a179-efc44599cd21	Divided We Stand	2015-09-26	\N	\N	5	\N	6202.1	\N	f
 bf49d725-77c4-44ac-802e-65e1efc33ab8	51994c36-6748-4297-a179-efc44599cd21	Still Treads the Shadow	2017-04-01	\N	\N	8	\N	6563.4	\N	f
 b2c05a5b-5cc6-467c-b908-caa3d27259a0	51994c36-6748-4297-a179-efc44599cd21	What Ships Are For	2017-07-30	\N	\N	9	\N	6892.3	\N	f
-015f97ba-5836-415a-be4f-3b5a0a6238f5	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Vulcan Hello	2017-09-24	\N	1	1	101	\N	\N	\N
 f4cd31ce-7793-476d-8cf6-a543c03ed76d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Battle at the Binary Stars	2017-09-24	\N	1	2	102	\N	\N	\N
 0230dbe0-3471-4da0-937a-8060a53d189d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Context Is for Kings	2017-10-01	\N	1	3	103	\N	\N	\N
 4e577014-ca17-4945-8d93-c08c40c2d64e	711a7a2e-2fad-4a85-b07e-14077db05150	The Die Is Cast	1995-05-01	\N	3	21	40513-467	\N	\N	\N
 7fc4c466-9c8b-4265-8832-ec10f339bc12	badb4eb9-d493-464f-94b8-21334d2157e1	For the World Is Hollow and I Have Touched the Sky	1968-11-08	2007-01-27	3	10	60032-65	5476.3	\N	\N
 ab6fba79-7ae2-4dd3-a46d-202d13db9b67	badb4eb9-d493-464f-94b8-21334d2157e1	Tomorrow Is Yesterday	1967-01-26	2007-05-05	1	21	6149-21	3113.2	\N	\N
 4adb734f-5222-4227-89b7-c3124a6bdf8f	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Butcher’s Knife Cares Not for the Lamb’s Cry	2017-10-08	\N	1	4	104	\N	\N	\N
+015f97ba-5836-415a-be4f-3b5a0a6238f5	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Vulcan Hello	2017-09-24	\N	1	1	101	1207.3	2256-05-11	\N
 \.
 
 
