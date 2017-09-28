@@ -771,6 +771,8 @@ f4cd31ce-7793-476d-8cf6-a543c03ed76d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Battle
 ab6fba79-7ae2-4dd3-a46d-202d13db9b67	badb4eb9-d493-464f-94b8-21334d2157e1	Tomorrow Is Yesterday	1967-01-26	2007-05-05	1	21	6149-21	3113.2	\N	\N
 4adb734f-5222-4227-89b7-c3124a6bdf8f	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Butcher’s Knife Cares Not for the Lamb’s Cry	2017-10-08	\N	1	4	104	\N	\N	\N
 015f97ba-5836-415a-be4f-3b5a0a6238f5	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Vulcan Hello	2017-09-24	\N	1	1	101	1207.3	2256-05-11	\N
+6cc33717-496c-4a3c-ab0c-b7d6698ddc38	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part I	2017-10-18	\N	\N	10	\N	\N	\N	f
+ad8877aa-7eea-49e5-9a31-f07f20753175	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part II	\N	\N	\N	11	\N	\N	\N	f
 \.
 
 
