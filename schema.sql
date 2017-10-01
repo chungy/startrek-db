@@ -16,6 +16,26 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: insert_dis_episode(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION insert_dis_episode() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  INSERT INTO
+         episode(series, title, airdate, season, episode_number,
+                 production_code, stardate, date)
+    VALUES(
+        (SELECT id FROM series WHERE title = 'Star Trek: Discovery'),
+        new.title, new.airdate, new.season, new.episode_number,
+        new.production_code, new.stardate, new.date);
+  RETURN new;
+END;
+$$;
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -460,6 +480,13 @@ ALTER TABLE ONLY medium_type
 
 ALTER TABLE ONLY medium_volume_episode
     ADD CONSTRAINT unique_vol_ep UNIQUE (volume, episode);
+
+
+--
+-- Name: dis insert_dis_episode_trig; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER insert_dis_episode_trig INSTEAD OF INSERT ON dis FOR EACH ROW EXECUTE PROCEDURE insert_dis_episode();
 
 
 --
