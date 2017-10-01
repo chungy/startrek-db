@@ -26,7 +26,7 @@ SET default_with_oids = false;
 
 CREATE TABLE episode (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    series uuid,
+    series uuid NOT NULL,
     title text NOT NULL,
     airdate date,
     remastered_airdate date,
@@ -133,8 +133,8 @@ CREATE VIEW ent AS
 
 CREATE TABLE media_set (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    series uuid,
-    type uuid,
+    series uuid NOT NULL,
+    type uuid NOT NULL,
     season smallint
 );
 
