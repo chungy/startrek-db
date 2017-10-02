@@ -24,15 +24,32 @@ CREATE FUNCTION insert_dis_episode() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 BEGIN
-  INSERT INTO
-         episode(series, title, airdate, season, episode_number,
-                 production_code, stardate, date)
-    VALUES(
-        (SELECT id FROM series WHERE title = 'Star Trek: Discovery'),
-        new.title, new.airdate, new.season, new.episode_number,
-        new.production_code, new.stardate, new.date);
+  INSERT INTO episode
+              (series, title, airdate, season, episode_number,
+               production_code, stardate, date_year, date_month, date_day)
+         VALUES
+           ('475cc2a6-c8d5-4f65-abaa-58a01c5bfeae',
+            new.title, new.airdate, new.season, new.episode_number,
+            new.production_code, new.stardate,
+            new.date_year, new.date_month, new.date_day);
   RETURN new;
 END;
+$$;
+
+
+--
+-- Name: valid_date(smallint, smallint); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION valid_date(month smallint, day smallint) RETURNS boolean
+    LANGUAGE sql
+    AS $$
+SELECT ((month = 1 OR month = 3 OR month = 5 OR month = 7 OR month = 8 OR month = 10 OR month = 12)
+         AND (day >= 1 AND day <= 31))
+       OR
+       ((month = 2) AND (day >= 1 AND day <= 29))
+       OR
+       ((month = 4 OR month = 6 OR month = 9 OR month = 11) AND (day >= 1 AND day <= 30));
 $$;
 
 
@@ -54,19 +71,12 @@ CREATE TABLE episode (
     episode_number smallint,
     production_code text,
     stardate numeric,
-    date date,
-    vignette boolean
-);
-
-
---
--- Name: series; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE series (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
-    title text NOT NULL,
-    aired daterange
+    date_year smallint,
+    date_month smallint,
+    date_day smallint,
+    vignette boolean,
+    CONSTRAINT valid_day CHECK (valid_date(date_month, date_day)),
+    CONSTRAINT valid_month CHECK (((date_month >= 1) AND (date_month <= 12)))
 );
 
 
@@ -82,9 +92,7 @@ CREATE VIEW cont AS
     episode.stardate,
     episode.vignette
    FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek Continues'::text)))
+  WHERE (episode.series = '51994c36-6748-4297-a179-efc44599cd21'::uuid)
   ORDER BY episode.airdate;
 
 
@@ -100,12 +108,13 @@ CREATE VIEW dis AS
     episode.episode_number,
     episode.production_code,
     episode.stardate,
-    episode.date
+    (((((episode.date_year || '-'::text) || episode.date_month) || '-'::text) || episode.date_day))::date AS date,
+    episode.date_year,
+    episode.date_month,
+    episode.date_day
    FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek: Discovery'::text)))
-  ORDER BY episode.airdate, episode.episode_number;
+  WHERE (episode.series = '475cc2a6-c8d5-4f65-abaa-58a01c5bfeae'::uuid)
+  ORDER BY episode.airdate;
 
 
 --
@@ -121,9 +130,7 @@ CREATE VIEW ds9 AS
     episode.production_code,
     episode.stardate
    FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek: Deep Space Nine'::text)))
+  WHERE (episode.series = '711a7a2e-2fad-4a85-b07e-14077db05150'::uuid)
   ORDER BY episode.airdate;
 
 
@@ -139,11 +146,9 @@ CREATE VIEW ent AS
     episode.episode_number,
     episode.production_code,
     episode.stardate,
-    episode.date
+    (((((episode.date_year || '-'::text) || episode.date_month) || '-'::text) || episode.date_day))::date AS date
    FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek: Enterprise'::text)))
+  WHERE (episode.series = 'e3656426-3669-442f-95ba-5daa5838270f'::uuid)
   ORDER BY episode.airdate;
 
 
@@ -204,6 +209,17 @@ CREATE TABLE movie (
 
 
 --
+-- Name: series; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE series (
+    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    title text NOT NULL,
+    aired daterange
+);
+
+
+--
 -- Name: tas; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -216,9 +232,7 @@ CREATE VIEW tas AS
     episode.production_code,
     episode.stardate
    FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek: The Animated Series'::text)))
+  WHERE (episode.series = 'e3ca03f7-c94d-4847-8cb1-9f19ba99bd43'::uuid)
   ORDER BY episode.airdate;
 
 
@@ -235,9 +249,7 @@ CREATE VIEW tng AS
     episode.production_code,
     episode.stardate
    FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek: The Next Generation'::text)))
+  WHERE (episode.series = '07858cb3-060a-421a-9c44-6028fb13b9de'::uuid)
   ORDER BY episode.airdate;
 
 
@@ -307,9 +319,7 @@ CREATE VIEW tos AS
     episode.production_code,
     episode.stardate
    FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek: The Original Series'::text)))
+  WHERE (episode.series = 'badb4eb9-d493-464f-94b8-21334d2157e1'::uuid)
   ORDER BY episode.airdate;
 
 
@@ -404,9 +414,7 @@ CREATE VIEW voy AS
     episode.production_code,
     episode.stardate
    FROM episode
-  WHERE (episode.series = ( SELECT series.id
-           FROM series
-          WHERE (series.title = 'Star Trek: Voyager'::text)))
+  WHERE (episode.series = 'b71e1b59-1560-4d80-8f71-2d924a8edb9a'::uuid)
   ORDER BY episode.airdate;
 
 
