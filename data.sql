@@ -715,6 +715,8 @@ ab6fba79-7ae2-4dd3-a46d-202d13db9b67	badb4eb9-d493-464f-94b8-21334d2157e1	Tomorr
 ad8877aa-7eea-49e5-9a31-f07f20753175	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part II	\N	\N	\N	11	\N	\N	\N	\N	\N	f
 f4cd31ce-7793-476d-8cf6-a543c03ed76d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Battle at the Binary Stars	2017-09-24	\N	1	2	102	1207.3	2256	5	11	\N
 0230dbe0-3471-4da0-937a-8060a53d189d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Context Is for Kings	2017-10-01	\N	1	3	103	\N	2256	11	\N	\N
+c0cce65e-f623-42e3-b565-cc4688da433d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Choose Your Pain	2017-10-15	\N	1	5	105	\N	\N	\N	\N	\N
+6eab1907-1c00-45b6-ab7c-37319136950e	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Lethe	2017-10-22	\N	1	6	106	\N	\N	\N	\N	\N
 72a8f795-633c-4138-81a3-5deb72b10d87	b71e1b59-1560-4d80-8f71-2d924a8edb9a	Shattered	2001-01-17	\N	7	11	257	\N	\N	\N	\N	\N
 840c815b-5079-4599-afe9-76b52c18c27e	51994c36-6748-4297-a179-efc44599cd21	Pilgrim of Eternity	2013-05-26	\N	\N	1	\N	6147.3	\N	\N	\N	f
 2728e81a-dae7-4571-bf6d-ba1769755909	badb4eb9-d493-464f-94b8-21334d2157e1	The Enterprise Incident	1968-09-27	2008-04-05	3	4	60032-59	5027.3	\N	\N	\N	\N
