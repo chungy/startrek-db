@@ -775,6 +775,9 @@ bf49d725-77c4-44ac-802e-65e1efc33ab8	51994c36-6748-4297-a179-efc44599cd21	Still 
 b2c05a5b-5cc6-467c-b908-caa3d27259a0	51994c36-6748-4297-a179-efc44599cd21	What Ships Are For	2017-07-30	\N	\N	9	\N	6892.3	\N	\N	\N	f
 4adb734f-5222-4227-89b7-c3124a6bdf8f	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Butcher’s Knife Cares Not for the Lamb’s Cry	2017-10-08	\N	1	4	104	\N	2256	11	\N	\N
 ad8877aa-7eea-49e5-9a31-f07f20753175	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part II	2017-11-13	\N	\N	11	\N	\N	\N	\N	\N	f
+b887d6d1-79fa-4a7a-b63c-f0f27fc82e9f	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Magic to Make the Sanest Man Go Mad	2017-10-29	\N	1	7	107	\N	\N	\N	\N	\N
+d331da4d-3acc-4115-a05c-f9dc30e68de1	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Si Vis Pacem, Para Bellum	2017-11-05	\N	1	8	108	\N	\N	\N	\N	\N
+c18fa871-b27e-4ebc-ae61-76daeed685f9	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Into the Forest I Go	2017-11-12	\N	1	9	109	\N	\N	\N	\N	\N
 \.
 
 
