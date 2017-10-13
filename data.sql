@@ -25,10 +25,10 @@ COPY series (id, title, aired) FROM stdin;
 711a7a2e-2fad-4a85-b07e-14077db05150	Star Trek: Deep Space Nine	[1993-01-03,1999-06-03)
 b71e1b59-1560-4d80-8f71-2d924a8edb9a	Star Trek: Voyager	[1995-01-16,2001-05-24)
 e3656426-3669-442f-95ba-5daa5838270f	Star Trek: Enterprise	[2001-09-26,2005-05-14)
-51994c36-6748-4297-a179-efc44599cd21	Star Trek Continues	[2013-05-26,)
 badb4eb9-d493-464f-94b8-21334d2157e1	Star Trek: The Original Series	[1966-09-08,1969-06-04)
 e3ca03f7-c94d-4847-8cb1-9f19ba99bd43	Star Trek: The Animated Series	[1973-09-08,1974-10-13)
 475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Star Trek: Discovery	[2017-09-24,)
+51994c36-6748-4297-a179-efc44599cd21	Star Trek Continues	[2013-05-26,2017-11-14)
 \.
 
 
@@ -711,7 +711,6 @@ b73b2669-d0e7-45b6-b2a8-4fc6691fd0a3	e3656426-3669-442f-95ba-5daa5838270f	Zero H
 ab6fba79-7ae2-4dd3-a46d-202d13db9b67	badb4eb9-d493-464f-94b8-21334d2157e1	Tomorrow Is Yesterday	1967-01-26	2007-05-05	1	21	6149-21	3113.2	\N	\N	\N	\N
 015f97ba-5836-415a-be4f-3b5a0a6238f5	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Vulcan Hello	2017-09-24	\N	1	1	101	1207.3	2256	5	11	\N
 6cc33717-496c-4a3c-ab0c-b7d6698ddc38	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part I	2017-10-18	\N	\N	10	\N	\N	\N	\N	\N	f
-ad8877aa-7eea-49e5-9a31-f07f20753175	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part II	\N	\N	\N	11	\N	\N	\N	\N	\N	f
 f4cd31ce-7793-476d-8cf6-a543c03ed76d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Battle at the Binary Stars	2017-09-24	\N	1	2	102	1207.3	2256	5	11	\N
 0230dbe0-3471-4da0-937a-8060a53d189d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Context Is for Kings	2017-10-01	\N	1	3	103	\N	2256	11	\N	\N
 c0cce65e-f623-42e3-b565-cc4688da433d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Choose Your Pain	2017-10-15	\N	1	5	105	\N	\N	\N	\N	\N
@@ -775,6 +774,7 @@ ae4df5d2-5456-48f4-ad7e-8ab7bd54875b	51994c36-6748-4297-a179-efc44599cd21	Divide
 bf49d725-77c4-44ac-802e-65e1efc33ab8	51994c36-6748-4297-a179-efc44599cd21	Still Treads the Shadow	2017-04-01	\N	\N	8	\N	6563.4	\N	\N	\N	f
 b2c05a5b-5cc6-467c-b908-caa3d27259a0	51994c36-6748-4297-a179-efc44599cd21	What Ships Are For	2017-07-30	\N	\N	9	\N	6892.3	\N	\N	\N	f
 4adb734f-5222-4227-89b7-c3124a6bdf8f	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Butcher’s Knife Cares Not for the Lamb’s Cry	2017-10-08	\N	1	4	104	\N	2256	11	\N	\N
+ad8877aa-7eea-49e5-9a31-f07f20753175	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part II	2017-11-13	\N	\N	11	\N	\N	\N	\N	\N	f
 \.
 
 
