@@ -713,7 +713,6 @@ ab6fba79-7ae2-4dd3-a46d-202d13db9b67	badb4eb9-d493-464f-94b8-21334d2157e1	Tomorr
 6cc33717-496c-4a3c-ab0c-b7d6698ddc38	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part I	2017-10-18	\N	\N	10	\N	\N	\N	\N	\N	f
 f4cd31ce-7793-476d-8cf6-a543c03ed76d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Battle at the Binary Stars	2017-09-24	\N	1	2	102	1207.3	2256	5	11	\N
 0230dbe0-3471-4da0-937a-8060a53d189d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Context Is for Kings	2017-10-01	\N	1	3	103	\N	2256	11	\N	\N
-c0cce65e-f623-42e3-b565-cc4688da433d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Choose Your Pain	2017-10-15	\N	1	5	105	\N	\N	\N	\N	\N
 6eab1907-1c00-45b6-ab7c-37319136950e	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Lethe	2017-10-22	\N	1	6	106	\N	\N	\N	\N	\N
 72a8f795-633c-4138-81a3-5deb72b10d87	b71e1b59-1560-4d80-8f71-2d924a8edb9a	Shattered	2001-01-17	\N	7	11	257	\N	\N	\N	\N	\N
 840c815b-5079-4599-afe9-76b52c18c27e	51994c36-6748-4297-a179-efc44599cd21	Pilgrim of Eternity	2013-05-26	\N	\N	1	\N	6147.3	\N	\N	\N	f
@@ -778,6 +777,7 @@ ad8877aa-7eea-49e5-9a31-f07f20753175	51994c36-6748-4297-a179-efc44599cd21	To Bol
 b887d6d1-79fa-4a7a-b63c-f0f27fc82e9f	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Magic to Make the Sanest Man Go Mad	2017-10-29	\N	1	7	107	\N	\N	\N	\N	\N
 d331da4d-3acc-4115-a05c-f9dc30e68de1	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Si Vis Pacem, Para Bellum	2017-11-05	\N	1	8	108	\N	\N	\N	\N	\N
 c18fa871-b27e-4ebc-ae61-76daeed685f9	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Into the Forest I Go	2017-11-12	\N	1	9	109	\N	\N	\N	\N	\N
+c0cce65e-f623-42e3-b565-cc4688da433d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Choose Your Pain	2017-10-15	\N	1	5	105	\N	2256	12	\N	\N
 \.
 
 
