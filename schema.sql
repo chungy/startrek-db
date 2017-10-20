@@ -16,6 +16,61 @@ SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
+ALTER TABLE IF EXISTS ONLY public.medium_volume DROP CONSTRAINT IF EXISTS medium_volume_media_set_fkey;
+ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXISTS medium_volume_episode_volume_fkey;
+ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXISTS medium_volume_episode_episode_fkey;
+ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_type_fkey;
+ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_series_fkey;
+ALTER TABLE IF EXISTS ONLY public.episode DROP CONSTRAINT IF EXISTS episode_series_fkey;
+DROP TRIGGER IF EXISTS insert_dis_episode_trig ON public.dis;
+ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXISTS unique_vol_ep;
+ALTER TABLE IF EXISTS ONLY public.medium_type DROP CONSTRAINT IF EXISTS type_unique;
+ALTER TABLE IF EXISTS ONLY public.series DROP CONSTRAINT IF EXISTS series_pkey;
+ALTER TABLE IF EXISTS ONLY public.movie DROP CONSTRAINT IF EXISTS movies_pkey;
+ALTER TABLE IF EXISTS ONLY public.medium_volume DROP CONSTRAINT IF EXISTS medium_volume_pkey;
+ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXISTS medium_volume_episode_pkey;
+ALTER TABLE IF EXISTS ONLY public.medium_type DROP CONSTRAINT IF EXISTS medium_pkey;
+ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_pkey;
+ALTER TABLE IF EXISTS ONLY public.episode DROP CONSTRAINT IF EXISTS episode_pkey;
+DROP VIEW IF EXISTS public.voy;
+DROP VIEW IF EXISTS public.tos_hddvd;
+DROP VIEW IF EXISTS public.tos_dvdr;
+DROP VIEW IF EXISTS public.tos_bluray;
+DROP VIEW IF EXISTS public.tos;
+DROP VIEW IF EXISTS public.tng_dvd;
+DROP VIEW IF EXISTS public.tng_bluray;
+DROP VIEW IF EXISTS public.tng;
+DROP VIEW IF EXISTS public.tas;
+DROP TABLE IF EXISTS public.series;
+DROP TABLE IF EXISTS public.movie;
+DROP TABLE IF EXISTS public.medium_volume_episode;
+DROP TABLE IF EXISTS public.medium_volume;
+DROP TABLE IF EXISTS public.medium_type;
+DROP TABLE IF EXISTS public.media_set;
+DROP VIEW IF EXISTS public.ent;
+DROP VIEW IF EXISTS public.ds9;
+DROP VIEW IF EXISTS public.dis;
+DROP VIEW IF EXISTS public.cont;
+DROP TABLE IF EXISTS public.episode;
+DROP FUNCTION IF EXISTS public.valid_date(month smallint, day smallint);
+DROP FUNCTION IF EXISTS public.insert_dis_episode();
+DROP SCHEMA IF EXISTS public;
+--
+-- Name: public; Type: SCHEMA; Schema: -; Owner: -
+--
+
+CREATE SCHEMA public;
+
+
+--
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+
+SET search_path = public, pg_catalog;
+
 --
 -- Name: insert_dis_episode(); Type: FUNCTION; Schema: public; Owner: -
 --
