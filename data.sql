@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.5
--- Dumped by pg_dump version 9.6.5
+-- Dumped from database version 10.1
+-- Dumped by pg_dump version 10.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -778,6 +778,7 @@ c0cce65e-f623-42e3-b565-cc4688da433d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Choose
 b887d6d1-79fa-4a7a-b63c-f0f27fc82e9f	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Magic to Make the Sanest Man Go Mad	2017-10-29	\N	1	7	107	2136.8	\N	\N	\N	\N
 d331da4d-3acc-4115-a05c-f9dc30e68de1	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Si Vis Pacem, Para Bellum	2017-11-05	\N	1	8	108	1308.9	\N	\N	\N	\N
 ad8877aa-7eea-49e5-9a31-f07f20753175	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part II	2017-11-13	\N	\N	11	\N	6995.1	\N	\N	\N	f
+8fbc38de-4949-4eb5-aa13-842c43d5dece	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Despite Yourself	2018-01-07	\N	1	10	110	\N	\N	\N	\N	\N
 \.
 
 
