@@ -779,6 +779,11 @@ b887d6d1-79fa-4a7a-b63c-f0f27fc82e9f	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Magic 
 d331da4d-3acc-4115-a05c-f9dc30e68de1	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Si Vis Pacem, Para Bellum	2017-11-05	\N	1	8	108	1308.9	\N	\N	\N	\N
 ad8877aa-7eea-49e5-9a31-f07f20753175	51994c36-6748-4297-a179-efc44599cd21	To Boldly Go, Part II	2017-11-13	\N	\N	11	\N	6995.1	\N	\N	\N	f
 8fbc38de-4949-4eb5-aa13-842c43d5dece	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Despite Yourself	2018-01-07	\N	1	10	110	\N	\N	\N	\N	\N
+4338172c-b812-4bc6-8e1e-fc0040408b15	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Wolf Inside	2018-01-14	\N	1	11	111	\N	\N	\N	\N	\N
+14d25079-a99a-4424-a874-f159760b3856	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Vaulting Ambition	2018-01-21	\N	1	12	112	\N	\N	\N	\N	\N
+3ab60516-3ab8-4ad3-997c-92f22c986192	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	What’s Past Is Prologue	2018-01-28	\N	1	13	113	\N	\N	\N	\N	\N
+d83f72bf-d10b-4e68-94d2-329d838838a1	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The War Without, the War Within	2018-02-04	\N	1	14	114	\N	\N	\N	\N	\N
+85ea560b-3f16-4951-8f17-9e0ab2d47965	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Will You Take My Hand?	2018-02-11	\N	1	15	115	\N	\N	\N	\N	\N
 \.
 
 
