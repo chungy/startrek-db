@@ -52,6 +52,9 @@ DROP VIEW IF EXISTS public.dis;
 DROP VIEW IF EXISTS public.cont;
 DROP TABLE IF EXISTS public.episode;
 DROP FUNCTION IF EXISTS public.valid_date(month smallint, day smallint);
+DROP FUNCTION IF EXISTS public.new_medium_volume(_series text, _type text, _season integer, _seq integer);
+DROP FUNCTION IF EXISTS public.new_medium_episode(_series text, _type text, _season integer, _seq integer, _title text);
+DROP FUNCTION IF EXISTS public.new_media_set(_series text, _type text, _season integer);
 DROP FUNCTION IF EXISTS public.insert_dis_episode();
 DROP SCHEMA IF EXISTS public;
 --
@@ -86,6 +89,74 @@ BEGIN
             new.date_year, new.date_month, new.date_day);
   RETURN new;
 END;
+$$;
+
+
+--
+-- Name: new_media_set(text, text, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.new_media_set(_series text, _type text, _season integer) RETURNS void
+    LANGUAGE sql
+    AS $$
+INSERT INTO media_set(series, type, season)
+VALUES ((SELECT id
+           FROM series
+          WHERE title = _series),
+        (SELECT id
+           FROM medium_type
+          WHERE type = _type),
+        _season);
+$$;
+
+
+--
+-- Name: new_medium_episode(text, text, integer, integer, text); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.new_medium_episode(_series text, _type text, _season integer, _seq integer, _title text) RETURNS void
+    LANGUAGE sql
+    AS $$
+INSERT INTO medium_volume_episode(volume, episode)
+VALUES ((SELECT id
+           FROM medium_volume
+          WHERE media_set = (SELECT id
+                               FROM media_set
+                              WHERE series = (SELECT id
+                                                FROM series
+                                               WHERE title = _series)
+                                AND type = (SELECT id
+                                              FROM medium_type
+                                             WHERE type = _type)
+                                AND season = _season)
+            AND sequence = _seq),
+        (SELECT id
+           FROM episode
+          WHERE title = _title
+            AND series = (SELECT id
+                            FROM series
+                           WHERE title = _series)));
+$$;
+
+
+--
+-- Name: new_medium_volume(text, text, integer, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.new_medium_volume(_series text, _type text, _season integer, _seq integer) RETURNS void
+    LANGUAGE sql
+    AS $$
+INSERT INTO medium_volume(media_set, sequence)
+VALUES ((SELECT id
+           FROM media_set
+          WHERE series = (SELECT id
+                            FROM series
+                           WHERE title = _series)
+            AND type = (SELECT id
+                          FROM medium_type
+                         WHERE type = _type)
+            AND season = _season),
+        _seq);
 $$;
 
 
