@@ -2,19 +2,18 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.1
--- Dumped by pg_dump version 10.1
+-- Dumped from database version 10.3
+-- Dumped by pg_dump version 10.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 ALTER TABLE IF EXISTS ONLY public.medium_volume DROP CONSTRAINT IF EXISTS medium_volume_media_set_fkey;
 ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXISTS medium_volume_episode_volume_fkey;
@@ -69,13 +68,11 @@ CREATE SCHEMA public;
 COMMENT ON SCHEMA public IS 'standard public schema';
 
 
-SET search_path = public, pg_catalog;
-
 --
 -- Name: insert_dis_episode(); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION insert_dis_episode() RETURNS trigger
+CREATE FUNCTION public.insert_dis_episode() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
 BEGIN
@@ -96,7 +93,7 @@ $$;
 -- Name: valid_date(smallint, smallint); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION valid_date(month smallint, day smallint) RETURNS boolean
+CREATE FUNCTION public.valid_date(month smallint, day smallint) RETURNS boolean
     LANGUAGE sql
     AS $$
 SELECT ((month = 1 OR month = 3 OR month = 5 OR month = 7 OR month = 8 OR month = 10 OR month = 12)
@@ -116,8 +113,8 @@ SET default_with_oids = false;
 -- Name: episode; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE episode (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+CREATE TABLE public.episode (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     series uuid NOT NULL,
     title text NOT NULL,
     airdate date,
@@ -130,7 +127,7 @@ CREATE TABLE episode (
     date_month smallint,
     date_day smallint,
     vignette boolean,
-    CONSTRAINT valid_day CHECK (valid_date(date_month, date_day)),
+    CONSTRAINT valid_day CHECK (public.valid_date(date_month, date_day)),
     CONSTRAINT valid_month CHECK (((date_month >= 1) AND (date_month <= 12)))
 );
 
@@ -139,14 +136,14 @@ CREATE TABLE episode (
 -- Name: cont; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW cont AS
+CREATE VIEW public.cont AS
  SELECT episode.id,
     episode.title,
     episode.airdate,
     episode.episode_number,
     episode.stardate,
     episode.vignette
-   FROM episode
+   FROM public.episode
   WHERE (episode.series = '51994c36-6748-4297-a179-efc44599cd21'::uuid)
   ORDER BY episode.airdate;
 
@@ -155,7 +152,7 @@ CREATE VIEW cont AS
 -- Name: dis; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW dis AS
+CREATE VIEW public.dis AS
  SELECT episode.id,
     episode.title,
     episode.airdate,
@@ -167,7 +164,7 @@ CREATE VIEW dis AS
     episode.date_year,
     episode.date_month,
     episode.date_day
-   FROM episode
+   FROM public.episode
   WHERE (episode.series = '475cc2a6-c8d5-4f65-abaa-58a01c5bfeae'::uuid)
   ORDER BY episode.airdate;
 
@@ -176,7 +173,7 @@ CREATE VIEW dis AS
 -- Name: ds9; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW ds9 AS
+CREATE VIEW public.ds9 AS
  SELECT episode.id,
     episode.title,
     episode.airdate,
@@ -184,7 +181,7 @@ CREATE VIEW ds9 AS
     episode.episode_number,
     episode.production_code,
     episode.stardate
-   FROM episode
+   FROM public.episode
   WHERE (episode.series = '711a7a2e-2fad-4a85-b07e-14077db05150'::uuid)
   ORDER BY episode.airdate;
 
@@ -193,7 +190,7 @@ CREATE VIEW ds9 AS
 -- Name: ent; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW ent AS
+CREATE VIEW public.ent AS
  SELECT episode.id,
     episode.title,
     episode.airdate,
@@ -202,7 +199,7 @@ CREATE VIEW ent AS
     episode.production_code,
     episode.stardate,
     (((((episode.date_year || '-'::text) || episode.date_month) || '-'::text) || episode.date_day))::date AS date
-   FROM episode
+   FROM public.episode
   WHERE (episode.series = 'e3656426-3669-442f-95ba-5daa5838270f'::uuid)
   ORDER BY episode.airdate;
 
@@ -211,8 +208,8 @@ CREATE VIEW ent AS
 -- Name: media_set; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE media_set (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+CREATE TABLE public.media_set (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     series uuid NOT NULL,
     type uuid NOT NULL,
     season smallint
@@ -223,8 +220,8 @@ CREATE TABLE media_set (
 -- Name: medium_type; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE medium_type (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+CREATE TABLE public.medium_type (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     type text NOT NULL
 );
 
@@ -233,8 +230,8 @@ CREATE TABLE medium_type (
 -- Name: medium_volume; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE medium_volume (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+CREATE TABLE public.medium_volume (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     media_set uuid NOT NULL,
     sequence smallint NOT NULL
 );
@@ -244,8 +241,8 @@ CREATE TABLE medium_volume (
 -- Name: medium_volume_episode; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE medium_volume_episode (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+CREATE TABLE public.medium_volume_episode (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     volume uuid NOT NULL,
     episode uuid NOT NULL
 );
@@ -255,8 +252,8 @@ CREATE TABLE medium_volume_episode (
 -- Name: movie; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE movie (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+CREATE TABLE public.movie (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     title text NOT NULL,
     release_date date NOT NULL,
     stardate numeric
@@ -267,8 +264,8 @@ CREATE TABLE movie (
 -- Name: series; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE series (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+CREATE TABLE public.series (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
     title text NOT NULL,
     aired daterange
 );
@@ -278,7 +275,7 @@ CREATE TABLE series (
 -- Name: tas; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW tas AS
+CREATE VIEW public.tas AS
  SELECT episode.id,
     episode.title,
     episode.airdate,
@@ -286,7 +283,7 @@ CREATE VIEW tas AS
     episode.episode_number,
     episode.production_code,
     episode.stardate
-   FROM episode
+   FROM public.episode
   WHERE (episode.series = 'e3ca03f7-c94d-4847-8cb1-9f19ba99bd43'::uuid)
   ORDER BY episode.airdate;
 
@@ -295,7 +292,7 @@ CREATE VIEW tas AS
 -- Name: tng; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW tng AS
+CREATE VIEW public.tng AS
  SELECT episode.id,
     episode.title,
     episode.airdate,
@@ -303,7 +300,7 @@ CREATE VIEW tng AS
     episode.episode_number,
     episode.production_code,
     episode.stardate
-   FROM episode
+   FROM public.episode
   WHERE (episode.series = '07858cb3-060a-421a-9c44-6028fb13b9de'::uuid)
   ORDER BY episode.airdate;
 
@@ -312,17 +309,17 @@ CREATE VIEW tng AS
 -- Name: tng_bluray; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW tng_bluray AS
+CREATE VIEW public.tng_bluray AS
  SELECT ep.id,
     ep.title,
     ms.season,
     mv.sequence AS disc
-   FROM episode ep,
-    media_set ms,
-    medium_type mt,
-    medium_volume mv,
-    medium_volume_episode mve,
-    series s
+   FROM public.episode ep,
+    public.media_set ms,
+    public.medium_type mt,
+    public.medium_volume mv,
+    public.medium_volume_episode mve,
+    public.series s
   WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Next Generation'::text) AND (mt.type = 'Blu-ray'::text))
   ORDER BY ep.airdate;
 
@@ -331,24 +328,24 @@ CREATE VIEW tng_bluray AS
 -- Name: VIEW tng_bluray; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON VIEW tng_bluray IS 'The TNG Blu-ray set released from 2012 to 2015, containing remastered versions of all episodes in 1080p and 7.1 surround sound.';
+COMMENT ON VIEW public.tng_bluray IS 'The TNG Blu-ray set released from 2012 to 2015, containing remastered versions of all episodes in 1080p and 7.1 surround sound.';
 
 
 --
 -- Name: tng_dvd; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW tng_dvd AS
+CREATE VIEW public.tng_dvd AS
  SELECT ep.id,
     ep.title,
     ms.season,
     mv.sequence AS disc
-   FROM episode ep,
-    media_set ms,
-    medium_type mt,
-    medium_volume mv,
-    medium_volume_episode mve,
-    series s
+   FROM public.episode ep,
+    public.media_set ms,
+    public.medium_type mt,
+    public.medium_volume mv,
+    public.medium_volume_episode mve,
+    public.series s
   WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Next Generation'::text) AND (mt.type = 'DVD'::text))
   ORDER BY ep.airdate;
 
@@ -357,14 +354,14 @@ CREATE VIEW tng_dvd AS
 -- Name: VIEW tng_dvd; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON VIEW tng_dvd IS 'The TNG DVD set first released in 2002, containing the episodes in their original broadcast visual quality, but the addition of 5.1 surround sound.';
+COMMENT ON VIEW public.tng_dvd IS 'The TNG DVD set first released in 2002, containing the episodes in their original broadcast visual quality, but the addition of 5.1 surround sound.';
 
 
 --
 -- Name: tos; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW tos AS
+CREATE VIEW public.tos AS
  SELECT episode.id,
     episode.title,
     episode.airdate,
@@ -373,7 +370,7 @@ CREATE VIEW tos AS
     episode.episode_number,
     episode.production_code,
     episode.stardate
-   FROM episode
+   FROM public.episode
   WHERE (episode.series = 'badb4eb9-d493-464f-94b8-21334d2157e1'::uuid)
   ORDER BY episode.airdate;
 
@@ -382,17 +379,17 @@ CREATE VIEW tos AS
 -- Name: tos_bluray; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW tos_bluray AS
+CREATE VIEW public.tos_bluray AS
  SELECT ep.id,
     ep.title,
     ms.season,
     mv.sequence AS disc
-   FROM episode ep,
-    media_set ms,
-    medium_type mt,
-    medium_volume mv,
-    medium_volume_episode mve,
-    series s
+   FROM public.episode ep,
+    public.media_set ms,
+    public.medium_type mt,
+    public.medium_volume mv,
+    public.medium_volume_episode mve,
+    public.series s
   WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Original Series'::text) AND (mt.type = 'Blu-ray'::text))
   ORDER BY ep.airdate, ep.production_code;
 
@@ -401,24 +398,24 @@ CREATE VIEW tos_bluray AS
 -- Name: VIEW tos_bluray; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON VIEW tos_bluray IS 'The TOS Blu-ray set released in 2009, containing the remastered versions of all the episodes in 1080p and 7.1 surround sound.';
+COMMENT ON VIEW public.tos_bluray IS 'The TOS Blu-ray set released in 2009, containing the remastered versions of all the episodes in 1080p and 7.1 surround sound.';
 
 
 --
 -- Name: tos_dvdr; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW tos_dvdr AS
+CREATE VIEW public.tos_dvdr AS
  SELECT ep.id,
     ep.title,
     ms.season,
     mv.sequence AS disc
-   FROM episode ep,
-    media_set ms,
-    medium_type mt,
-    medium_volume mv,
-    medium_volume_episode mve,
-    series s
+   FROM public.episode ep,
+    public.media_set ms,
+    public.medium_type mt,
+    public.medium_volume mv,
+    public.medium_volume_episode mve,
+    public.series s
   WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Original Series'::text) AND (mt.type = 'DVD-R'::text))
   ORDER BY ep.airdate;
 
@@ -427,24 +424,24 @@ CREATE VIEW tos_dvdr AS
 -- Name: VIEW tos_dvdr; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON VIEW tos_dvdr IS 'The TOS DVD set released in 2008 and 2009, containing the remastered episodes in 480i and 5.1 surround sound, with only the enhanced effects.';
+COMMENT ON VIEW public.tos_dvdr IS 'The TOS DVD set released in 2008 and 2009, containing the remastered episodes in 480i and 5.1 surround sound, with only the enhanced effects.';
 
 
 --
 -- Name: tos_hddvd; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW tos_hddvd AS
+CREATE VIEW public.tos_hddvd AS
  SELECT ep.id,
     ep.title,
     ms.season,
     mv.sequence AS disc
-   FROM episode ep,
-    media_set ms,
-    medium_type mt,
-    medium_volume mv,
-    medium_volume_episode mve,
-    series s
+   FROM public.episode ep,
+    public.media_set ms,
+    public.medium_type mt,
+    public.medium_volume mv,
+    public.medium_volume_episode mve,
+    public.series s
   WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Original Series'::text) AND (mt.type = 'HD DVD'::text))
   ORDER BY ep.airdate;
 
@@ -453,14 +450,14 @@ CREATE VIEW tos_hddvd AS
 -- Name: VIEW tos_hddvd; Type: COMMENT; Schema: public; Owner: -
 --
 
-COMMENT ON VIEW tos_hddvd IS 'TOS Season 1 released on HD DVD in 2007, shortly before the format''s cancellation and Blu-ray winning the HD format war.  Contains all Season 1 episodes in remastered 1080p and 5.1 surround sound, as well as DVD versions of the same episodes in 480i.  Unlike the Blu-ray release, these discs contain only the enhanced effects.';
+COMMENT ON VIEW public.tos_hddvd IS 'TOS Season 1 released on HD DVD in 2007, shortly before the format''s cancellation and Blu-ray winning the HD format war.  Contains all Season 1 episodes in remastered 1080p and 5.1 surround sound, as well as DVD versions of the same episodes in 480i.  Unlike the Blu-ray release, these discs contain only the enhanced effects.';
 
 
 --
 -- Name: voy; Type: VIEW; Schema: public; Owner: -
 --
 
-CREATE VIEW voy AS
+CREATE VIEW public.voy AS
  SELECT episode.id,
     episode.title,
     episode.airdate,
@@ -468,7 +465,7 @@ CREATE VIEW voy AS
     episode.episode_number,
     episode.production_code,
     episode.stardate
-   FROM episode
+   FROM public.episode
   WHERE (episode.series = 'b71e1b59-1560-4d80-8f71-2d924a8edb9a'::uuid)
   ORDER BY episode.airdate;
 
@@ -477,7 +474,7 @@ CREATE VIEW voy AS
 -- Name: episode episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY episode
+ALTER TABLE ONLY public.episode
     ADD CONSTRAINT episode_pkey PRIMARY KEY (id);
 
 
@@ -485,7 +482,7 @@ ALTER TABLE ONLY episode
 -- Name: media_set media_set_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY media_set
+ALTER TABLE ONLY public.media_set
     ADD CONSTRAINT media_set_pkey PRIMARY KEY (id);
 
 
@@ -493,7 +490,7 @@ ALTER TABLE ONLY media_set
 -- Name: medium_type medium_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY medium_type
+ALTER TABLE ONLY public.medium_type
     ADD CONSTRAINT medium_pkey PRIMARY KEY (id);
 
 
@@ -501,7 +498,7 @@ ALTER TABLE ONLY medium_type
 -- Name: medium_volume_episode medium_volume_episode_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY medium_volume_episode
+ALTER TABLE ONLY public.medium_volume_episode
     ADD CONSTRAINT medium_volume_episode_pkey PRIMARY KEY (id);
 
 
@@ -509,7 +506,7 @@ ALTER TABLE ONLY medium_volume_episode
 -- Name: medium_volume medium_volume_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY medium_volume
+ALTER TABLE ONLY public.medium_volume
     ADD CONSTRAINT medium_volume_pkey PRIMARY KEY (id);
 
 
@@ -517,7 +514,7 @@ ALTER TABLE ONLY medium_volume
 -- Name: movie movies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY movie
+ALTER TABLE ONLY public.movie
     ADD CONSTRAINT movies_pkey PRIMARY KEY (id);
 
 
@@ -525,7 +522,7 @@ ALTER TABLE ONLY movie
 -- Name: series series_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY series
+ALTER TABLE ONLY public.series
     ADD CONSTRAINT series_pkey PRIMARY KEY (id);
 
 
@@ -533,7 +530,7 @@ ALTER TABLE ONLY series
 -- Name: medium_type type_unique; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY medium_type
+ALTER TABLE ONLY public.medium_type
     ADD CONSTRAINT type_unique UNIQUE (type);
 
 
@@ -541,7 +538,7 @@ ALTER TABLE ONLY medium_type
 -- Name: medium_volume_episode unique_vol_ep; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY medium_volume_episode
+ALTER TABLE ONLY public.medium_volume_episode
     ADD CONSTRAINT unique_vol_ep UNIQUE (volume, episode);
 
 
@@ -549,55 +546,55 @@ ALTER TABLE ONLY medium_volume_episode
 -- Name: dis insert_dis_episode_trig; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER insert_dis_episode_trig INSTEAD OF INSERT ON dis FOR EACH ROW EXECUTE PROCEDURE insert_dis_episode();
+CREATE TRIGGER insert_dis_episode_trig INSTEAD OF INSERT ON public.dis FOR EACH ROW EXECUTE PROCEDURE public.insert_dis_episode();
 
 
 --
 -- Name: episode episode_series_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY episode
-    ADD CONSTRAINT episode_series_fkey FOREIGN KEY (series) REFERENCES series(id);
+ALTER TABLE ONLY public.episode
+    ADD CONSTRAINT episode_series_fkey FOREIGN KEY (series) REFERENCES public.series(id);
 
 
 --
 -- Name: media_set media_set_series_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY media_set
-    ADD CONSTRAINT media_set_series_fkey FOREIGN KEY (series) REFERENCES series(id);
+ALTER TABLE ONLY public.media_set
+    ADD CONSTRAINT media_set_series_fkey FOREIGN KEY (series) REFERENCES public.series(id);
 
 
 --
 -- Name: media_set media_set_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY media_set
-    ADD CONSTRAINT media_set_type_fkey FOREIGN KEY (type) REFERENCES medium_type(id);
+ALTER TABLE ONLY public.media_set
+    ADD CONSTRAINT media_set_type_fkey FOREIGN KEY (type) REFERENCES public.medium_type(id);
 
 
 --
 -- Name: medium_volume_episode medium_volume_episode_episode_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY medium_volume_episode
-    ADD CONSTRAINT medium_volume_episode_episode_fkey FOREIGN KEY (episode) REFERENCES episode(id);
+ALTER TABLE ONLY public.medium_volume_episode
+    ADD CONSTRAINT medium_volume_episode_episode_fkey FOREIGN KEY (episode) REFERENCES public.episode(id);
 
 
 --
 -- Name: medium_volume_episode medium_volume_episode_volume_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY medium_volume_episode
-    ADD CONSTRAINT medium_volume_episode_volume_fkey FOREIGN KEY (volume) REFERENCES medium_volume(id);
+ALTER TABLE ONLY public.medium_volume_episode
+    ADD CONSTRAINT medium_volume_episode_volume_fkey FOREIGN KEY (volume) REFERENCES public.medium_volume(id);
 
 
 --
 -- Name: medium_volume medium_volume_media_set_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY medium_volume
-    ADD CONSTRAINT medium_volume_media_set_fkey FOREIGN KEY (media_set) REFERENCES media_set(id);
+ALTER TABLE ONLY public.medium_volume
+    ADD CONSTRAINT medium_volume_media_set_fkey FOREIGN KEY (media_set) REFERENCES public.media_set(id);
 
 
 --
