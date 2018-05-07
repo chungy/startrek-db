@@ -2,25 +2,24 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.1
--- Dumped by pg_dump version 10.1
+-- Dumped from database version 10.3
+-- Dumped by pg_dump version 10.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
-
-SET search_path = public, pg_catalog;
 
 --
 -- Data for Name: series; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY series (id, title, aired) FROM stdin;
+COPY public.series (id, title, aired) FROM stdin;
 07858cb3-060a-421a-9c44-6028fb13b9de	Star Trek: The Next Generation	[1987-09-28,1994-05-24)
 711a7a2e-2fad-4a85-b07e-14077db05150	Star Trek: Deep Space Nine	[1993-01-03,1999-06-03)
 b71e1b59-1560-4d80-8f71-2d924a8edb9a	Star Trek: Voyager	[1995-01-16,2001-05-24)
@@ -36,7 +35,7 @@ e3ca03f7-c94d-4847-8cb1-9f19ba99bd43	Star Trek: The Animated Series	[1973-09-08,
 -- Data for Name: episode; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY episode (id, series, title, airdate, remastered_airdate, season, episode_number, production_code, stardate, date_year, date_month, date_day, vignette) FROM stdin;
+COPY public.episode (id, series, title, airdate, remastered_airdate, season, episode_number, production_code, stardate, date_year, date_month, date_day, vignette) FROM stdin;
 22abead6-4aba-4b27-a3b3-77de4f9645a5	e3ca03f7-c94d-4847-8cb1-9f19ba99bd43	Beyond the Farthest Star	1973-09-08	\N	1	1	22004	5221.3	\N	\N	\N	\N
 537f700c-b205-49d4-917a-ef0a4e794da8	e3ca03f7-c94d-4847-8cb1-9f19ba99bd43	Yesteryear	1973-09-15	\N	1	2	22003	5373.4	\N	\N	\N	\N
 7d07308d-a055-4a23-910d-daae8dfcd636	e3ca03f7-c94d-4847-8cb1-9f19ba99bd43	One of Our Planets Is Missing	1973-09-22	\N	1	3	22007	5371.3	\N	\N	\N	\N
@@ -791,7 +790,7 @@ d83f72bf-d10b-4e68-94d2-329d838838a1	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Wa
 -- Data for Name: medium_type; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY medium_type (id, type) FROM stdin;
+COPY public.medium_type (id, type) FROM stdin;
 054dd069-ab0d-4559-bce4-dc60a8a117b3	DVD
 cbe2b80a-24e9-4419-8082-49eee80f6178	Blu-ray
 e586af79-3b61-4814-9266-0c980745531e	HD DVD
@@ -803,7 +802,7 @@ efd6b8a0-bc4a-4fea-a270-e2aae4493b1a	DVD-R
 -- Data for Name: media_set; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY media_set (id, series, type, season) FROM stdin;
+COPY public.media_set (id, series, type, season) FROM stdin;
 55467c09-2659-4a62-8a13-db0f84feb3ea	badb4eb9-d493-464f-94b8-21334d2157e1	cbe2b80a-24e9-4419-8082-49eee80f6178	1
 ad4bf37f-dd46-4404-aa53-d25cc7b070a6	07858cb3-060a-421a-9c44-6028fb13b9de	054dd069-ab0d-4559-bce4-dc60a8a117b3	1
 1c79041c-09c8-468f-b9d8-5c1a41be50dc	badb4eb9-d493-464f-94b8-21334d2157e1	cbe2b80a-24e9-4419-8082-49eee80f6178	2
@@ -832,7 +831,7 @@ ed516e50-4111-4c58-92a2-305e2584f2d1	badb4eb9-d493-464f-94b8-21334d2157e1	efd6b8
 -- Data for Name: medium_volume; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY medium_volume (id, media_set, sequence) FROM stdin;
+COPY public.medium_volume (id, media_set, sequence) FROM stdin;
 ba53f11f-93f8-47e0-b574-441f89bb3b4d	55467c09-2659-4a62-8a13-db0f84feb3ea	1
 a348e3b0-8699-40da-9996-76470874dd61	55467c09-2659-4a62-8a13-db0f84feb3ea	2
 9e898052-98a1-47fd-81c6-1d049afe87c8	55467c09-2659-4a62-8a13-db0f84feb3ea	3
@@ -984,7 +983,7 @@ e9ac4cc4-b7e2-47ac-b66f-b2a7700eb910	ed516e50-4111-4c58-92a2-305e2584f2d1	7
 -- Data for Name: medium_volume_episode; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY medium_volume_episode (id, volume, episode) FROM stdin;
+COPY public.medium_volume_episode (id, volume, episode) FROM stdin;
 33bd26fa-0da6-401c-807c-706bb3af4c16	ba53f11f-93f8-47e0-b574-441f89bb3b4d	cf051f02-7134-4e1d-9bf9-3209c4c64927
 969f74f6-86ef-4cb8-9d09-d91b21f74dec	ba53f11f-93f8-47e0-b574-441f89bb3b4d	243a2c69-477a-4800-9f20-0659a2a9daa4
 e12bc89f-5305-46c9-9d4b-80aece131b76	ba53f11f-93f8-47e0-b574-441f89bb3b4d	ca41484f-e28a-4020-9f33-5c32556b1dea
@@ -1540,7 +1539,7 @@ ed54d6c2-784c-4080-8994-6c40933e42c7	c9483b29-1eed-4d4e-bc42-e5a988decee2	dd3f50
 -- Data for Name: movie; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY movie (id, title, release_date, stardate) FROM stdin;
+COPY public.movie (id, title, release_date, stardate) FROM stdin;
 a0c67ab4-67c9-447a-9ca9-1da231282f6f	Star Trek: The Motion Picture	1979-12-07	7410.2
 83b8be6b-3419-4466-b6a9-32ac1d8f98d6	Star Trek II: The Wrath of Khan	1982-06-04	8130.3
 b2052c4a-97e5-4c19-951f-590290e708c1	Star Trek III: The Search for Spock	1984-06-01	8210.3
