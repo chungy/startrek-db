@@ -40,8 +40,9 @@ DROP VIEW IF EXISTS public.tng_dvd;
 DROP VIEW IF EXISTS public.tng_bluray;
 DROP VIEW IF EXISTS public.tng;
 DROP VIEW IF EXISTS public.tas;
-DROP TABLE IF EXISTS public.series;
 DROP TABLE IF EXISTS public.movie;
+DROP VIEW IF EXISTS public.ent_bluray;
+DROP TABLE IF EXISTS public.series;
 DROP TABLE IF EXISTS public.medium_volume_episode;
 DROP TABLE IF EXISTS public.medium_volume;
 DROP TABLE IF EXISTS public.medium_type;
@@ -272,7 +273,7 @@ CREATE VIEW public.ent AS
     (((((episode.date_year || '-'::text) || episode.date_month) || '-'::text) || episode.date_day))::date AS date
    FROM public.episode
   WHERE (episode.series = 'e3656426-3669-442f-95ba-5daa5838270f'::uuid)
-  ORDER BY episode.airdate;
+  ORDER BY episode.airdate, episode.production_code;
 
 
 --
@@ -320,6 +321,36 @@ CREATE TABLE public.medium_volume_episode (
 
 
 --
+-- Name: series; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.series (
+    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
+    title text NOT NULL,
+    aired daterange
+);
+
+
+--
+-- Name: ent_bluray; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.ent_bluray AS
+ SELECT ep.id,
+    ep.title,
+    ms.season,
+    mv.sequence AS disc
+   FROM public.episode ep,
+    public.media_set ms,
+    public.medium_type mt,
+    public.medium_volume mv,
+    public.medium_volume_episode mve,
+    public.series s
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: Enterprise'::text) AND (mt.type = 'Blu-ray'::text))
+  ORDER BY ep.airdate, ep.production_code;
+
+
+--
 -- Name: movie; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -328,17 +359,6 @@ CREATE TABLE public.movie (
     title text NOT NULL,
     release_date date NOT NULL,
     stardate numeric
-);
-
-
---
--- Name: series; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.series (
-    id uuid DEFAULT public.gen_random_uuid() NOT NULL,
-    title text NOT NULL,
-    aired daterange
 );
 
 
