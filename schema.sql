@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.3
--- Dumped by pg_dump version 10.3
+-- Dumped from database version 11.1
+-- Dumped by pg_dump version 11.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -40,6 +40,7 @@ DROP VIEW IF EXISTS public.tng_dvd;
 DROP VIEW IF EXISTS public.tng_bluray;
 DROP VIEW IF EXISTS public.tng;
 DROP VIEW IF EXISTS public.tas;
+DROP VIEW IF EXISTS public.short;
 DROP TABLE IF EXISTS public.movie;
 DROP VIEW IF EXISTS public.ent_bluray;
 DROP TABLE IF EXISTS public.series;
@@ -360,6 +361,21 @@ CREATE TABLE public.movie (
     release_date date NOT NULL,
     stardate numeric
 );
+
+
+--
+-- Name: short; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.short AS
+ SELECT episode.id,
+    episode.title,
+    episode.airdate,
+    episode.season,
+    episode.episode_number
+   FROM public.episode
+  WHERE (episode.series = '2636619c-8a7f-42fd-9892-f3316f9be046'::uuid)
+  ORDER BY episode.airdate;
 
 
 --

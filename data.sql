@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.3
--- Dumped by pg_dump version 10.3
+-- Dumped from database version 11.1
+-- Dumped by pg_dump version 11.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -28,6 +28,7 @@ badb4eb9-d493-464f-94b8-21334d2157e1	Star Trek: The Original Series	[1966-09-08,
 e3ca03f7-c94d-4847-8cb1-9f19ba99bd43	Star Trek: The Animated Series	[1973-09-08,1974-10-13)
 475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Star Trek: Discovery	[2017-09-24,)
 51994c36-6748-4297-a179-efc44599cd21	Star Trek Continues	[2013-05-26,2017-11-14)
+2636619c-8a7f-42fd-9892-f3316f9be046	Star Trek: Short Treks	[2018-10-04,)
 \.
 
 
@@ -783,6 +784,10 @@ ad8877aa-7eea-49e5-9a31-f07f20753175	51994c36-6748-4297-a179-efc44599cd21	To Bol
 d83f72bf-d10b-4e68-94d2-329d838838a1	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The War Without, the War Within	2018-02-04	\N	1	14	114	\N	\N	\N	\N	\N
 85ea560b-3f16-4951-8f17-9e0ab2d47965	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Will You Take My Hand?	2018-02-11	\N	1	15	115	\N	\N	\N	\N	\N
 3ab60516-3ab8-4ad3-997c-92f22c986192	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	What’s Past Is Prologue	2018-01-28	\N	1	13	113	1834.2	\N	\N	\N	\N
+288c0e2a-abfe-4851-aa09-359c1de8039e	2636619c-8a7f-42fd-9892-f3316f9be046	Runaway	2018-10-04	\N	1	1	\N	\N	\N	\N	\N	\N
+52c9455c-2818-467a-81c1-725975730cf4	2636619c-8a7f-42fd-9892-f3316f9be046	Calypso	2018-11-08	\N	1	2	\N	\N	\N	\N	\N	\N
+e79fe3a8-456d-4c31-b9b3-42220a9055bb	2636619c-8a7f-42fd-9892-f3316f9be046	The Brightest Star	2018-12-06	\N	1	3	\N	\N	\N	\N	\N	\N
+d616fdd5-385d-4750-815e-aeb80835ce96	2636619c-8a7f-42fd-9892-f3316f9be046	The Escape Artist	2019-01-03	\N	1	4	\N	\N	\N	\N	\N	\N
 \.
 
 
