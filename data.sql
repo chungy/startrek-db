@@ -788,6 +788,8 @@ d83f72bf-d10b-4e68-94d2-329d838838a1	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Wa
 52c9455c-2818-467a-81c1-725975730cf4	2636619c-8a7f-42fd-9892-f3316f9be046	Calypso	2018-11-08	\N	1	2	\N	\N	\N	\N	\N	\N
 e79fe3a8-456d-4c31-b9b3-42220a9055bb	2636619c-8a7f-42fd-9892-f3316f9be046	The Brightest Star	2018-12-06	\N	1	3	\N	\N	\N	\N	\N	\N
 d616fdd5-385d-4750-815e-aeb80835ce96	2636619c-8a7f-42fd-9892-f3316f9be046	The Escape Artist	2019-01-03	\N	1	4	\N	\N	\N	\N	\N	\N
+2be895a1-52bf-41ac-95b4-b05069641b68	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Brother	2019-01-17	\N	2	1	201	\N	\N	\N	\N	\N
+8c84ce33-538a-4398-b999-1b5c936196a7	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	New Eden	2019-01-24	\N	2	2	202	\N	\N	\N	\N	\N
 \.
 
 
