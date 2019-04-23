@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.1
--- Dumped by pg_dump version 11.1
+-- Dumped from database version 11.2
+-- Dumped by pg_dump version 11.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -788,8 +788,20 @@ d83f72bf-d10b-4e68-94d2-329d838838a1	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Wa
 52c9455c-2818-467a-81c1-725975730cf4	2636619c-8a7f-42fd-9892-f3316f9be046	Calypso	2018-11-08	\N	1	2	\N	\N	\N	\N	\N	\N
 e79fe3a8-456d-4c31-b9b3-42220a9055bb	2636619c-8a7f-42fd-9892-f3316f9be046	The Brightest Star	2018-12-06	\N	1	3	\N	\N	\N	\N	\N	\N
 d616fdd5-385d-4750-815e-aeb80835ce96	2636619c-8a7f-42fd-9892-f3316f9be046	The Escape Artist	2019-01-03	\N	1	4	\N	\N	\N	\N	\N	\N
-2be895a1-52bf-41ac-95b4-b05069641b68	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Brother	2019-01-17	\N	2	1	201	\N	\N	\N	\N	\N
-8c84ce33-538a-4398-b999-1b5c936196a7	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	New Eden	2019-01-24	\N	2	2	202	\N	\N	\N	\N	\N
+831db460-5e70-4b04-acb7-8ae602afc92d	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Saints of Imperfection	2019-02-14	\N	2	5	205	\N	\N	\N	\N	\N
+2be895a1-52bf-41ac-95b4-b05069641b68	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Brother	2019-01-17	\N	2	1	201	1025.19	\N	\N	\N	\N
+8c84ce33-538a-4398-b999-1b5c936196a7	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	New Eden	2019-01-24	\N	2	2	202	1027.32	\N	\N	\N	\N
+03e857a1-903c-4178-8f1b-4c7ee20c5c5a	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Point of Light	2019-01-31	\N	2	3	203	1029.46	\N	\N	\N	\N
+899e398f-0aa4-49f5-9f15-4ebe1b5d7b71	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	An Obol for Charon	2019-02-07	\N	2	4	204	1834.2512	\N	\N	\N	\N
+491b4bd0-0c6a-4257-87ff-f98eb874dfaf	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Sounds of Thunder	2019-02-21	\N	2	6	206	1035.86	\N	\N	\N	\N
+ad781fec-d460-44c5-9622-e66a7b8e92d8	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Light and Shadows	2019-02-28	\N	2	7	207	\N	\N	\N	\N	\N
+4c293679-c567-4f62-a920-dae597076126	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	If Memory Serves	2019-03-07	\N	2	8	208	1532.9	\N	\N	\N	\N
+6075db89-df32-4571-9da8-a5601ae2f1bf	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Project Daedalus	2019-03-14	\N	2	9	209	\N	\N	\N	\N	\N
+fc03e035-e8ba-4da0-a5b0-9237cdd89567	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	The Red Angel	2019-03-21	\N	2	10	210	\N	\N	\N	\N	\N
+b562f42e-ff5d-4f8a-a7b8-4e736309e613	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Perpetual Infinity	2019-03-28	\N	2	11	211	\N	\N	\N	\N	\N
+b827e04d-afd8-49de-9847-2460d682a459	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Through the Valley of Shadows	2019-04-04	\N	2	12	212	1048.66	\N	\N	\N	\N
+5e645d62-7197-456d-91fb-14cb41e4d1fa	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Such Sweet Sorrow	2019-04-11	\N	2	13	213	1050.8	\N	\N	\N	\N
+038cce2f-93c2-4a65-a8c7-e22a197be015	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Such Sweet Sorrow, Part 2	2019-04-18	\N	2	14	214	1201.7	\N	\N	\N	\N
 \.
 
 
