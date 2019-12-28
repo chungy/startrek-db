@@ -30,6 +30,7 @@ e3ca03f7-c94d-4847-8cb1-9f19ba99bd43	Star Trek: The Animated Series	[1973-09-08,
 475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Star Trek: Discovery	[2017-09-24,)
 51994c36-6748-4297-a179-efc44599cd21	Star Trek Continues	[2013-05-26,2017-11-14)
 2636619c-8a7f-42fd-9892-f3316f9be046	Star Trek: Short Treks	[2018-10-04,)
+36fa7419-ad4e-4de8-85df-41776962f754	Star Trek: Picard	[2020-01-23,)
 \.
 
 
