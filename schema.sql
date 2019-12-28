@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.2
--- Dumped by pg_dump version 11.2
+-- Dumped from database version 12.1
+-- Dumped by pg_dump version 12.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -12,6 +12,7 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -21,6 +22,7 @@ ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXIST
 ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_type_fkey;
 ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_series_fkey;
 ALTER TABLE IF EXISTS ONLY public.episode DROP CONSTRAINT IF EXISTS episode_series_fkey;
+DROP TRIGGER IF EXISTS insert_short_episode_trig ON public.short;
 DROP TRIGGER IF EXISTS insert_dis_episode_trig ON public.dis;
 ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXISTS unique_vol_ep;
 ALTER TABLE IF EXISTS ONLY public.medium_type DROP CONSTRAINT IF EXISTS type_unique;
@@ -57,6 +59,7 @@ DROP FUNCTION IF EXISTS public.valid_date(month smallint, day smallint);
 DROP FUNCTION IF EXISTS public.new_medium_volume(_series text, _type text, _season integer, _seq integer);
 DROP FUNCTION IF EXISTS public.new_medium_episode(_series text, _type text, _season integer, _seq integer, _title text);
 DROP FUNCTION IF EXISTS public.new_media_set(_series text, _type text, _season integer);
+DROP FUNCTION IF EXISTS public.insert_short_episode();
 DROP FUNCTION IF EXISTS public.insert_dis_episode();
 DROP SCHEMA IF EXISTS public;
 --
@@ -89,6 +92,24 @@ BEGIN
             new.title, new.airdate, new.season, new.episode_number,
             new.production_code, new.stardate,
             new.date_year, new.date_month, new.date_day);
+  RETURN new;
+END;
+$$;
+
+
+--
+-- Name: insert_short_episode(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_short_episode() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  INSERT INTO episode
+              (series, title, airdate, season, episode_number)
+         VALUES
+           ('2636619c-8a7f-42fd-9892-f3316f9be046',
+            new.title, new.airdate, new.season, new.episode_number);
   RETURN new;
 END;
 $$;
@@ -180,7 +201,7 @@ $$;
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
+SET default_table_access_method = heap;
 
 --
 -- Name: episode; Type: TABLE; Schema: public; Owner: -
@@ -653,7 +674,14 @@ ALTER TABLE ONLY public.medium_volume_episode
 -- Name: dis insert_dis_episode_trig; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER insert_dis_episode_trig INSTEAD OF INSERT ON public.dis FOR EACH ROW EXECUTE PROCEDURE public.insert_dis_episode();
+CREATE TRIGGER insert_dis_episode_trig INSTEAD OF INSERT ON public.dis FOR EACH ROW EXECUTE FUNCTION public.insert_dis_episode();
+
+
+--
+-- Name: short insert_short_episode_trig; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER insert_short_episode_trig INSTEAD OF INSERT ON public.short FOR EACH ROW EXECUTE FUNCTION public.insert_short_episode();
 
 
 --

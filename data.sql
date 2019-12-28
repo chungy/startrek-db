@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.2
--- Dumped by pg_dump version 11.2
+-- Dumped from database version 12.1
+-- Dumped by pg_dump version 12.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -12,6 +12,7 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -802,6 +803,12 @@ b562f42e-ff5d-4f8a-a7b8-4e736309e613	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Perpet
 b827e04d-afd8-49de-9847-2460d682a459	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Through the Valley of Shadows	2019-04-04	\N	2	12	212	1048.66	\N	\N	\N	\N
 5e645d62-7197-456d-91fb-14cb41e4d1fa	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Such Sweet Sorrow	2019-04-11	\N	2	13	213	1050.8	\N	\N	\N	\N
 038cce2f-93c2-4a65-a8c7-e22a197be015	475cc2a6-c8d5-4f65-abaa-58a01c5bfeae	Such Sweet Sorrow, Part 2	2019-04-18	\N	2	14	214	1201.7	\N	\N	\N	\N
+b2800daa-f4af-4563-9653-f4b4fad8f52b	2636619c-8a7f-42fd-9892-f3316f9be046	Q&A	2019-10-05	\N	2	1	\N	\N	\N	\N	\N	\N
+d92d4802-d119-4b5d-884b-440c0edfaad6	2636619c-8a7f-42fd-9892-f3316f9be046	The Trouble with Edward	2019-10-09	\N	2	2	\N	\N	\N	\N	\N	\N
+ab7dbeb5-d922-4de7-bdea-9c12ac14a3a2	2636619c-8a7f-42fd-9892-f3316f9be046	Ask Not	2019-11-14	\N	2	3	\N	\N	\N	\N	\N	\N
+a0550630-6f08-46b8-a10f-77739abbb8e6	2636619c-8a7f-42fd-9892-f3316f9be046	The Girl Who Made the Stars	2019-12-12	\N	2	4	\N	\N	\N	\N	\N	\N
+7223031b-a7d4-4763-9ee7-511647085770	2636619c-8a7f-42fd-9892-f3316f9be046	Ephraim and Dot	2019-12-12	\N	2	5	\N	\N	\N	\N	\N	\N
+a31e28e0-0858-479f-b676-b7e85d212c55	2636619c-8a7f-42fd-9892-f3316f9be046	Children of Mars	2020-01-09	\N	2	6	\N	\N	\N	\N	\N	\N
 \.
 
 
