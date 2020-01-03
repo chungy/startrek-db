@@ -45,12 +45,13 @@ DROP VIEW IF EXISTS public.tas;
 DROP VIEW IF EXISTS public.short;
 DROP TABLE IF EXISTS public.movie;
 DROP VIEW IF EXISTS public.ent_bluray;
+DROP VIEW IF EXISTS public.ent;
+DROP VIEW IF EXISTS public.ds9_dvd;
 DROP TABLE IF EXISTS public.series;
 DROP TABLE IF EXISTS public.medium_volume_episode;
 DROP TABLE IF EXISTS public.medium_volume;
 DROP TABLE IF EXISTS public.medium_type;
 DROP TABLE IF EXISTS public.media_set;
-DROP VIEW IF EXISTS public.ent;
 DROP VIEW IF EXISTS public.ds9;
 DROP VIEW IF EXISTS public.dis;
 DROP VIEW IF EXISTS public.cont;
@@ -281,24 +282,6 @@ CREATE VIEW public.ds9 AS
 
 
 --
--- Name: ent; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW public.ent AS
- SELECT episode.id,
-    episode.title,
-    episode.airdate,
-    episode.season,
-    episode.episode_number,
-    episode.production_code,
-    episode.stardate,
-    (((((episode.date_year || '-'::text) || episode.date_month) || '-'::text) || episode.date_day))::date AS date
-   FROM public.episode
-  WHERE (episode.series = 'e3656426-3669-442f-95ba-5daa5838270f'::uuid)
-  ORDER BY episode.airdate, episode.production_code;
-
-
---
 -- Name: media_set; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -351,6 +334,43 @@ CREATE TABLE public.series (
     title text NOT NULL,
     aired daterange
 );
+
+
+--
+-- Name: ds9_dvd; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.ds9_dvd AS
+ SELECT ep.id,
+    ep.title,
+    ms.season,
+    mv.sequence AS disc
+   FROM public.episode ep,
+    public.media_set ms,
+    public.medium_type mt,
+    public.medium_volume mv,
+    public.medium_volume_episode mve,
+    public.series s
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: Deep Space Nine'::text) AND (mt.type = 'DVD'::text))
+  ORDER BY ep.airdate;
+
+
+--
+-- Name: ent; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.ent AS
+ SELECT episode.id,
+    episode.title,
+    episode.airdate,
+    episode.season,
+    episode.episode_number,
+    episode.production_code,
+    episode.stardate,
+    (((((episode.date_year || '-'::text) || episode.date_month) || '-'::text) || episode.date_day))::date AS date
+   FROM public.episode
+  WHERE (episode.series = 'e3656426-3669-442f-95ba-5daa5838270f'::uuid)
+  ORDER BY episode.airdate, episode.production_code;
 
 
 --
