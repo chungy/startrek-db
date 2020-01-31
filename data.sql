@@ -811,8 +811,10 @@ aed8dd3b-db27-41cb-af22-bc2ac1b66a85	07858cb3-060a-421a-9c44-6028fb13b9de	The Em
 cdb45fb8-aba5-4503-bcce-92bff8cf2eb0	07858cb3-060a-421a-9c44-6028fb13b9de	Gambit, Part II	1993-10-18	\N	7	5	40277-257	47160.1	\N	\N	\N	\N
 74e7fecc-79f6-479d-8399-7ad64ab339f1	badb4eb9-d493-464f-94b8-21334d2157e1	Operation ‐‐ Annihilate!	1967-04-13	2008-02-23	1	29	6149-29	3287.2	\N	\N	\N	\N
 99a98dbc-7357-42fc-99be-7ab5b1a9658d	36fa7419-ad4e-4de8-85df-41776962f754	Remembrance	2020-01-23	\N	1	1	101	\N	\N	\N	\N	\N
-ca55373c-2cab-4552-9f82-0dd8e036e625	36fa7419-ad4e-4de8-85df-41776962f754	Maps and Legends	2020-01-30	\N	1	2	102	\N	\N	\N	\N	\N
-be0c4b9b-053b-43e3-82e8-de76d385b688	36fa7419-ad4e-4de8-85df-41776962f754	The End is the Beginning	2020-02-06	\N	1	3	103	\N	\N	\N	\N	\N
+ca55373c-2cab-4552-9f82-0dd8e036e625	36fa7419-ad4e-4de8-85df-41776962f754	Maps and Legends	2020-01-30	\N	1	2	102a	\N	\N	\N	\N	\N
+be0c4b9b-053b-43e3-82e8-de76d385b688	36fa7419-ad4e-4de8-85df-41776962f754	The End is the Beginning	2020-02-06	\N	1	3	102b	\N	\N	\N	\N	\N
+1e4e7166-ef19-424a-8289-8786bc5322c2	36fa7419-ad4e-4de8-85df-41776962f754	Absolute Candor	2020-02-13	\N	1	4	103	\N	\N	\N	\N	\N
+16f12b3a-1def-4d92-8daf-a1a50e0221d3	36fa7419-ad4e-4de8-85df-41776962f754	Stardust City Rag	2020-02-20	\N	1	5	104	\N	\N	\N	\N	\N
 \.
 
 
