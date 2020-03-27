@@ -23,6 +23,7 @@ ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_
 ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_series_fkey;
 ALTER TABLE IF EXISTS ONLY public.episode DROP CONSTRAINT IF EXISTS episode_series_fkey;
 DROP TRIGGER IF EXISTS insert_short_episode_trig ON public.short;
+DROP TRIGGER IF EXISTS insert_picard_episode_trig ON public.picard;
 DROP TRIGGER IF EXISTS insert_dis_episode_trig ON public.dis;
 ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXISTS unique_vol_ep;
 ALTER TABLE IF EXISTS ONLY public.medium_type DROP CONSTRAINT IF EXISTS type_unique;
@@ -732,6 +733,13 @@ ALTER TABLE ONLY public.medium_volume_episode
 --
 
 CREATE TRIGGER insert_dis_episode_trig INSTEAD OF INSERT ON public.dis FOR EACH ROW EXECUTE FUNCTION public.insert_dis_episode();
+
+
+--
+-- Name: picard insert_picard_episode_trig; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER insert_picard_episode_trig INSTEAD OF INSERT ON public.picard FOR EACH ROW EXECUTE FUNCTION public.insert_picard_episode();
 
 
 --
