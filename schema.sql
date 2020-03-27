@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.1
--- Dumped by pg_dump version 12.1
+-- Dumped from database version 12.2
+-- Dumped by pg_dump version 12.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,7 +23,6 @@ ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_
 ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_series_fkey;
 ALTER TABLE IF EXISTS ONLY public.episode DROP CONSTRAINT IF EXISTS episode_series_fkey;
 DROP TRIGGER IF EXISTS insert_short_episode_trig ON public.short;
-DROP TRIGGER IF EXISTS insert_picard_episode_trig ON public.picard;
 DROP TRIGGER IF EXISTS insert_dis_episode_trig ON public.dis;
 ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXISTS unique_vol_ep;
 ALTER TABLE IF EXISTS ONLY public.medium_type DROP CONSTRAINT IF EXISTS type_unique;
@@ -110,12 +109,11 @@ CREATE FUNCTION public.insert_picard_episode() RETURNS trigger
     AS $$
 BEGIN
   INSERT INTO episode
-              (series, title, airdate, season, episode_number,
-               production_code, stardate)
+              (series, title, airdate, season, episode_number, production_code)
          VALUES
            ('36fa7419-ad4e-4de8-85df-41776962f754',
             new.title, new.airdate, new.season, new.episode_number,
-            new.production_code, new.stardate);
+            new.production_code);
   RETURN new;
 END;
 $$;
@@ -437,8 +435,7 @@ CREATE VIEW public.picard AS
     episode.airdate,
     episode.season,
     episode.episode_number,
-    episode.production_code,
-    episode.stardate
+    episode.production_code
    FROM public.episode
   WHERE (episode.series = '36fa7419-ad4e-4de8-85df-41776962f754'::uuid)
   ORDER BY episode.airdate;
@@ -735,13 +732,6 @@ ALTER TABLE ONLY public.medium_volume_episode
 --
 
 CREATE TRIGGER insert_dis_episode_trig INSTEAD OF INSERT ON public.dis FOR EACH ROW EXECUTE FUNCTION public.insert_dis_episode();
-
-
---
--- Name: picard insert_picard_episode_trig; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER insert_picard_episode_trig INSTEAD OF INSERT ON public.picard FOR EACH ROW EXECUTE FUNCTION public.insert_picard_episode();
 
 
 --
