@@ -1934,14 +1934,14 @@ a0c67ab4-67c9-447a-9ca9-1da231282f6f	Star Trek: The Motion Picture	1979-12-07	74
 b2052c4a-97e5-4c19-951f-590290e708c1	Star Trek III: The Search for Spock	1984-06-01	8210.3
 8572390d-13c1-4f62-993f-b8f502db165c	Star Trek V: The Final Frontier	1989-06-09	8454.1
 26597b0c-c9dc-4901-93f4-a078fac7a4bd	Star Trek VI: The Undiscovered Country	1991-12-06	9521.6
-3aab858a-6e86-42fa-b05e-862ff17fff59	Star Trek: Generations	1994-11-18	48632.4
 71452f39-c2c3-4e44-9bcb-194f5062a14c	Star Trek: First Contact	1996-11-22	50893.5
-8103e04a-db1c-421d-bd9c-1a49d8ef8f19	Star Trek: Nemesis	2002-12-13	56844.9
 a86384e6-420a-488d-a6bf-4fd70cd3c4df	Star Trek	2009-05-08	2258.42
 aca48b16-31ad-4ec5-8ad1-d0ddcbf433d4	Star Trek Into Darkness	2013-05-16	2259.55
 8b7303fc-c244-43af-8271-789dde6b37dd	Star Trek IV: The Voyage Home	1986-11-26	8390.0
 cad4e76a-4443-4b2d-bdf1-5fbe37365269	Star Trek Beyond	2016-07-22	2263.02
 43584f2f-efbf-422b-ae68-3acaa0eea64d	Star Trek: Insurrection	1998-12-11	\N
+3aab858a-6e86-42fa-b05e-862ff17fff59	Star Trek Generations	1994-11-18	48632.4
+8103e04a-db1c-421d-bd9c-1a49d8ef8f19	Star Trek Nemesis	2002-12-13	56844.9
 \.
 
 
