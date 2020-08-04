@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 12.3
+-- Dumped by pg_dump version 12.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -42,6 +42,7 @@ DROP VIEW IF EXISTS public.tos;
 DROP VIEW IF EXISTS public.tng_dvd;
 DROP VIEW IF EXISTS public.tng_bluray;
 DROP VIEW IF EXISTS public.tng;
+DROP VIEW IF EXISTS public.tas_bluray;
 DROP VIEW IF EXISTS public.tas;
 DROP VIEW IF EXISTS public.short;
 DROP VIEW IF EXISTS public.picard;
@@ -472,6 +473,25 @@ CREATE VIEW public.tas AS
    FROM public.episode
   WHERE (episode.series = 'e3ca03f7-c94d-4847-8cb1-9f19ba99bd43'::uuid)
   ORDER BY episode.airdate;
+
+
+--
+-- Name: tas_bluray; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.tas_bluray AS
+ SELECT ep.id,
+    ep.title,
+    ms.season,
+    mv.sequence AS disc
+   FROM public.episode ep,
+    public.media_set ms,
+    public.medium_type mt,
+    public.medium_volume mv,
+    public.medium_volume_episode mve,
+    public.series s
+  WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: The Animated Series'::text) AND (mt.type = 'Blu-ray'::text))
+  ORDER BY ep.airdate;
 
 
 --
