@@ -24,6 +24,7 @@ ALTER TABLE IF EXISTS ONLY public.media_set DROP CONSTRAINT IF EXISTS media_set_
 ALTER TABLE IF EXISTS ONLY public.episode DROP CONSTRAINT IF EXISTS episode_series_fkey;
 DROP TRIGGER IF EXISTS insert_short_episode_trig ON public.short;
 DROP TRIGGER IF EXISTS insert_picard_episode_trig ON public.picard;
+DROP TRIGGER IF EXISTS insert_ld_episode_trig ON public.ld;
 DROP TRIGGER IF EXISTS insert_dis_episode_trig ON public.dis;
 ALTER TABLE IF EXISTS ONLY public.medium_volume_episode DROP CONSTRAINT IF EXISTS unique_vol_ep;
 ALTER TABLE IF EXISTS ONLY public.medium_type DROP CONSTRAINT IF EXISTS type_unique;
@@ -47,6 +48,7 @@ DROP VIEW IF EXISTS public.tas;
 DROP VIEW IF EXISTS public.short;
 DROP VIEW IF EXISTS public.picard;
 DROP TABLE IF EXISTS public.movie;
+DROP VIEW IF EXISTS public.ld;
 DROP VIEW IF EXISTS public.ent_bluray;
 DROP VIEW IF EXISTS public.ent;
 DROP VIEW IF EXISTS public.ds9_dvd;
@@ -65,6 +67,7 @@ DROP FUNCTION IF EXISTS public.new_medium_episode(_series text, _type text, _sea
 DROP FUNCTION IF EXISTS public.new_media_set(_series text, _type text, _season integer);
 DROP FUNCTION IF EXISTS public.insert_short_episode();
 DROP FUNCTION IF EXISTS public.insert_picard_episode();
+DROP FUNCTION IF EXISTS public.insert_ld_episode();
 DROP FUNCTION IF EXISTS public.insert_dis_episode();
 DROP SCHEMA IF EXISTS public;
 --
@@ -97,6 +100,26 @@ BEGIN
             new.title, new.airdate, new.season, new.episode_number,
             new.production_code, new.stardate,
             new.date_year, new.date_month, new.date_day);
+  RETURN new;
+END;
+$$;
+
+
+--
+-- Name: insert_ld_episode(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.insert_ld_episode() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  INSERT INTO episode
+              (series, title, airdate, season, episode_number,
+               production_code, stardate)
+         VALUES
+           ('2615e675-fa67-4f44-b6dd-1d32562d8785',
+            new.title, new.airdate, new.season, new.episode_number,
+            new.production_code, new.stardate);
   RETURN new;
 END;
 $$;
@@ -413,6 +436,23 @@ CREATE VIEW public.ent_bluray AS
     public.series s
   WHERE ((ep.id = mve.episode) AND (ms.id = mv.media_set) AND (ms.type = mt.id) AND (mve.volume = mv.id) AND (s.id = ep.series) AND (s.title = 'Star Trek: Enterprise'::text) AND (mt.type = 'Blu-ray'::text))
   ORDER BY ep.airdate, ep.production_code;
+
+
+--
+-- Name: ld; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.ld AS
+ SELECT episode.id,
+    episode.title,
+    episode.airdate,
+    episode.season,
+    episode.episode_number,
+    episode.production_code,
+    episode.stardate
+   FROM public.episode
+  WHERE (episode.series = '2615e675-fa67-4f44-b6dd-1d32562d8785'::uuid)
+  ORDER BY episode.airdate;
 
 
 --
@@ -753,6 +793,13 @@ ALTER TABLE ONLY public.medium_volume_episode
 --
 
 CREATE TRIGGER insert_dis_episode_trig INSTEAD OF INSERT ON public.dis FOR EACH ROW EXECUTE FUNCTION public.insert_dis_episode();
+
+
+--
+-- Name: ld insert_ld_episode_trig; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER insert_ld_episode_trig INSTEAD OF INSERT ON public.ld FOR EACH ROW EXECUTE FUNCTION public.insert_ld_episode();
 
 
 --
