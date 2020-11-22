@@ -32,7 +32,7 @@ on 9.4).
 
 Once you have PostgreSQL installed and running, I recommend creating a
 new database, probably with a name like `startrek`, to load the schema
-and data into.  A separate database isnʼt strictly required, but you
+and data into. A separate database isnʼt strictly required, but you
 may run into collision issues by using another.
 
 As the database superuser, run `CREATE EXTENSION pgcrypto` on the
@@ -42,7 +42,18 @@ commands should load the schema and the data:
 
   $ psql -f schema.sql startrek
   $ psql -f data.sql startrek
+  
+=== Using it on a Docker container
+You can also use it on a Docker image with the database pre-loaded.
 
+To build the image issue:
+
+  $ docker build -t postgres-startrek .
+  
+This creates a Docker image tagged  `postgres-startrek` based on https://hub.docker.com/_/postgres[PostgreSQL official image] (https://github.com/docker-library/postgres/blob/b9c080857b880202ebd23c59d33fe86d7a70fea3/13/alpine/Dockerfile[13-alpine tag]).
+
+To see how to use this image check the https://hub.docker.com/_/postgres[PostreSQL image documentation].
+  
 == Moving forward
 
 Iʼll be happy to accept additions and improvements to the database.
