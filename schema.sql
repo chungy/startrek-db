@@ -1,3 +1,27 @@
+-- Allow subsequent `make` runs work by dropping existing tables/views
+DROP VIEW IF EXISTS cont;
+DROP VIEW IF EXISTS ds9;
+DROP VIEW IF EXISTS ds9_dvd;
+DROP VIEW IF EXISTS ent;
+DROP VIEW IF EXISTS ent_bluray;
+DROP VIEW IF EXISTS tas;
+DROP VIEW IF EXISTS tas_bluray;
+DROP VIEW IF EXISTS tng;
+DROP VIEW IF EXISTS tng_bluray;
+DROP VIEW IF EXISTS tng_dvd;
+DROP VIEW IF EXISTS tos;
+DROP VIEW IF EXISTS tos_bluray;
+DROP VIEW IF EXISTS tos_dvdr;
+DROP VIEW IF EXISTS tos_hddvd;
+DROP VIEW IF EXISTS voy;
+DROP VIEW IF EXISTS voy_dvd;
+DROP TABLE IF EXISTS episode;
+DROP TABLE IF EXISTS media_set;
+DROP TABLE IF EXISTS medium_volume;
+DROP TABLE IF EXISTS medium_volume_episode;
+DROP TABLE IF EXISTS movie;
+DROP TABLE IF EXISTS series;
+
 CREATE TABLE episode (
        episode_id INTEGER PRIMARY KEY,
        series_id INTEGER NOT NULL REFERENCES series,
@@ -135,7 +159,6 @@ CREATE VIEW tas AS
 
 CREATE VIEW tas_bluray AS
   SELECT episode.title,
-         media_set.season,
          medium_volume.sequence AS disc
     FROM episode
     JOIN medium_volume_episode USING (episode_id)
