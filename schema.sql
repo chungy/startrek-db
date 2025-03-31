@@ -5,6 +5,7 @@ DROP VIEW IF EXISTS ds9;
 DROP VIEW IF EXISTS ds9_dvd;
 DROP VIEW IF EXISTS ent;
 DROP VIEW IF EXISTS ent_bluray;
+DROP VIEW IF EXISTS ld;
 DROP VIEW IF EXISTS pic;
 DROP VIEW IF EXISTS short;
 DROP VIEW IF EXISTS tas;
@@ -160,6 +161,20 @@ CREATE VIEW ent_bluray AS
                                 FROM series
                                WHERE title='Star Trek: Enterprise')
    ORDER BY airdate;
+
+CREATE VIEW ld AS
+  SELECT episode_id,
+         title,
+         airdate,
+         season,
+         episode_number,
+         production_code,
+         stardate
+    FROM episode
+   WHERE series_id = (SELECT series_id
+                        FROM series
+                       WHERE title='Star Trek: Lower Decks')
+   ORDER BY airdate, episode_number;
 
 CREATE VIEW pic AS
   SELECT episode_id,
