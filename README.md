@@ -64,7 +64,7 @@ lot of room to document all of it.
 SQL is not for everyone.  It may be nice to make a GUI program or a
 WebUI to interact with the database.
 
-## Acting and production credits
+### Acting and production credits
 
 This may be the most far-fetched and unlikely to come to fruition, but
 it could be nice to add entries for actors, characters, and production
