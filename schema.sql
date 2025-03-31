@@ -7,6 +7,7 @@ DROP VIEW IF EXISTS ent;
 DROP VIEW IF EXISTS ent_bluray;
 DROP VIEW IF EXISTS ld;
 DROP VIEW IF EXISTS pic;
+DROP VIEW IF EXISTS pro;
 DROP VIEW IF EXISTS short;
 DROP VIEW IF EXISTS tas;
 DROP VIEW IF EXISTS tas_bluray;
@@ -189,6 +190,20 @@ CREATE VIEW pic AS
                         FROM series
                        WHERE title='Star Trek: Picard')
    ORDER BY airdate;
+
+CREATE VIEW pro AS
+  SELECT episode_id,
+         title,
+         airdate,
+         season,
+         episode_number,
+         production_code,
+         stardate
+    FROM episode
+   WHERE series_id = (SELECT series_id
+                        FROM series
+                       WHERE title='Star Trek: Prodigy')
+   ORDER BY airdate, episode_number;
 
 CREATE VIEW short AS
   SELECT episode_id,

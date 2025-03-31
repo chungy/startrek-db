@@ -11,7 +11,8 @@ INSERT INTO series (series_id, title, begin, end) VALUES
 (8, 'Star Trek: Discovery', '2017-09-24', '2024-05-30'),
 (9, 'Star Trek: Short Treks', '2018-10-04', '2020-01-09'),
 (10, 'Star Trek: Picard', '2020-01-23', '2023-04-20'),
-(11, 'Star Trek: Lower Decks', '2020-08-06', '2024-12-19');
+(11, 'Star Trek: Lower Decks', '2020-08-06', '2024-12-19'),
+(12, 'Star Trek: Prodigy', '2021-10-28', '2024-07-01');
 
 INSERT INTO movie (movie_id, title, release_date, stardate) VALUES
 (1, 'Star Trek: The Motion Picture', '1979-12-07', 7410.2),
@@ -960,6 +961,49 @@ INSERT INTO episode (episode_id, series_id, title, airdate, season,
 (885, 11, 'Upper Decks', '2024-12-05', 5, 8, 'LD-5008', null),
 (886, 11, 'Fissure Quest', '2024-12-12', 5, 9, 'LD-5009', null),
 (887, 11, 'The New Next Generation', '2024-12-19', 5, 10, 'LD-5010', null);
+
+-- Prodigy
+INSERT INTO episode (episode_id, series_id, title, airdate, season,
+                     episode_number, production_code, stardate) VALUES
+(888, 12, 'Lost and Found', '2021-10-28', 1, 1, '101, 102', null),
+(889, 12, 'Starstruck', '2021-11-04', 1, 3, '103', null),
+(890, 12, 'Dream Catcher', '2021-11-11', 1, 4, '104', null),
+(891, 12, 'Terror Firma', '2021-11-18', 1, 5, '105', null),
+(892, 12, 'Kobayashi', '2022-01-06', 1, 6, '106', null),
+(893, 12, 'First Con‐tact', '2022-01-13', 1, 7, '107', null),
+(894, 12, 'Time Amok', '2022-01-20', 1, 8, '108', 607125.6),
+(895, 12, 'A Moral Star, Part 1', '2022-01-27', 1, 9, '109', null),
+(896, 12, 'A Moral Star, Part 2', '2022-02-03', 1, 10, '110', 61103.1),
+(897, 12, 'Asylum', '2022-10-27', 1, 11, '111', 61209.5),
+(898, 12, 'Let Sleeping Borg Lie', '2022-11-03', 1, 12, '112', 61284.3),
+(899, 12, 'All the World’s a Stage', '2022-11-10', 1, 13, '113', 61296.9),
+(900, 12, 'Crossroads', '2022-11-17', 1, 14, '114', 61302.7),
+(901, 12, 'Masquerade', '2022-11-24', 1, 15, '115', null),
+(902, 12, 'Preludes', '2022-12-01', 1, 16, '116', null),
+(903, 12, 'Ghost in the Machine', '2022-12-08', 1, 17, '117', null),
+(904, 12, 'Mindwalk', '2022-12-15', 1, 18, '118', null),
+(905, 12, 'Supernova, Part 1', '2022-12-22', 1, 19, '119', null),
+(906, 12, 'Supernova, Part 2', '2022-12-29', 1, 20, '120', null),
+(907, 12, 'Into the Breach, Part I', '2024-07-01', 2, 1, '201', null),
+(908, 12, 'Into the Breach, Part II', '2024-07-01', 2, 2, '202', 61859.6),
+(909, 12, 'Who Saves the Saviors', '2024-07-01', 2, 3, '203', 61860.1),
+(910, 12, 'Temporal Mechanics 101', '2024-07-01', 2, 4, '204', 112152.1),
+(911, 12, 'Observer’s Paradox', '2024-07-01', 2, 5, '205', 61865.1),
+(912, 12, 'Imposter Syndrome', '2024-07-01', 2, 6, '206', null),
+(913, 12, 'The Fast and the Curious', '2024-07-01', 2, 7, '207', 61875.9),
+(914, 12, 'Is There in Beauty No Truth?', '2024-07-01', 2, 8, '208', 61881.4),
+(915, 12, 'The Devourer of All Things, Part I', '2024-07-01', 2, 9, '209', 61886.6),
+(916, 12, 'The Devourer of All Things, Part II', '2024-07-01', 2, 10, '210', null),
+(917, 12, 'Last Flight of the Protostar, Part I', '2024-07-01', 2, 11, '211', null),
+(918, 12, 'Last Flight of the Protostar, Part II', '2024-07-01', 2, 12, '212', 61898.2),
+(919, 12, 'A Tribble Called Quest', '2024-07-01', 2, 13, '213', null),
+(920, 12, 'Cracked Mirror', '2024-07-01', 2, 14, '214', null),
+(921, 12, 'Ascension, Part I', '2024-07-01', 2, 15, '215', 61945.4),
+(922, 12, 'Ascension, Part II', '2024-07-01', 2, 16, '216', null),
+(923, 12, 'Brink', '2024-07-01', 2, 17, '217', 62083.5),
+(924, 12, 'Touch of Grey', '2024-07-01', 2, 18, '218', 62091.1),
+(925, 12, 'Ouroboros, Part I', '2024-07-01', 2, 19, '219', null),
+(926, 12, 'Ouroboros, Part II', '2024-07-01', 2, 20, '220', 62314.8);
 
 -- TOS Blu-ray
 INSERT INTO media_set (media_set_id, series_id, type, season) VALUES
