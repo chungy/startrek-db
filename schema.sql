@@ -5,6 +5,7 @@ DROP VIEW IF EXISTS ds9;
 DROP VIEW IF EXISTS ds9_dvd;
 DROP VIEW IF EXISTS ent;
 DROP VIEW IF EXISTS ent_bluray;
+DROP VIEW IF EXISTS short;
 DROP VIEW IF EXISTS tas;
 DROP VIEW IF EXISTS tas_bluray;
 DROP VIEW IF EXISTS tng;
@@ -158,6 +159,18 @@ CREATE VIEW ent_bluray AS
                                 FROM series
                                WHERE title='Star Trek: Enterprise')
    ORDER BY airdate;
+
+CREATE VIEW short AS
+  SELECT episode_id,
+         title,
+         airdate,
+         season,
+         episode_number
+    FROM episode
+   WHERE series_id = (SELECT series_id
+                        FROM series
+                       WHERE title='Star Trek: Short Treks')
+   ORDER BY airdate, episode_number;
 
 CREATE VIEW tas AS
   SELECT episode_id,

@@ -8,7 +8,8 @@ INSERT INTO series (series_id, title, begin, end) VALUES
 (5, 'Star Trek: Voyager', '1995-01-16', '2001-05-23'),
 (6, 'Star Trek: Enterprise', '2001-09-26', '2005-05-13'),
 (7, 'Star Trek Continues', '2013-05-26', '2017-11-13'),
-(8, 'Star Trek: Discovery', '2017-09-24', '2024-05-30');
+(8, 'Star Trek: Discovery', '2017-09-24', '2024-05-30'),
+(9, 'Star Trek: Short Treks', '2018-10-04', '2020-01-09');
 
 INSERT INTO movie (movie_id, title, release_date, stardate) VALUES
 (1, 'Star Trek: The Motion Picture', '1979-12-07', 7410.2),
@@ -855,6 +856,20 @@ INSERT INTO episode (episode_id, series_id, title, airdate, season,
 (795, 8, 'Labyrinths', '2024-05-16', 5, 8, '508', null, null),
 (796, 8, 'Lagrange Point', '2024-05-23', 5, 9, '509', null, null),
 (797, 8, 'Life, Itself', '2024-05-30', 5, 10, '510', null, null);
+
+-- SHORT
+INSERT INTO episode (episode_id, series_id, title, airdate,
+                     season, episode_number) VALUES
+(798, 9, 'Runaway', '2018-10-04', 1, 1),
+(799, 9, 'Calypso', '2018-11-08', 1, 2),
+(800, 9, 'The Brightest Star', '2018-12-06', 1, 3),
+(801, 9, 'The Escape Artist', '2019-01-03', 1, 4),
+(802, 9, 'Q&A', '2019-10-05', 2, 1),
+(803, 9, 'The Trouble with Edward', '2019-10-09', 2, 2),
+(804, 9, 'Ask Not', '2019-11-14', 2, 3),
+(805, 9, 'Ephraim and Dot', '2019-12-12', 2, 4),
+(806, 9, 'The Girl Who Made the Stars', '2019-12-12', 2, 5),
+(807, 9, 'Children of Mars', '2020-01-09', 2, 6);
 
 -- TOS Blu-ray
 INSERT INTO media_set (media_set_id, series_id, type, season) VALUES
