@@ -40,8 +40,10 @@ As the database superuser, run `CREATE EXTENSION pgcrypto` on the
 `gen_random_uuid()` function. Following that, the following two
 commands should load the schema and the data:
 
-  $ psql -f schema.sql startrek
-  $ psql -f data.sql startrek
+```
+$ psql -f schema.sql startrek
+$ psql -f data.sql startrek
+```
 
 ## Moving forward
 
