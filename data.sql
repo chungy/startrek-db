@@ -13,7 +13,8 @@ INSERT INTO series (series_id, title, begin, end) VALUES
 (10, 'Star Trek: Picard', '2020-01-23', '2023-04-20'),
 (11, 'Star Trek: Lower Decks', '2020-08-06', '2024-12-19'),
 (12, 'Star Trek: Prodigy', '2021-10-28', '2024-07-01'),
-(13, 'Star Trek: very Short Treks', '2023-09-08', '2023-10-04');
+(13, 'Star Trek: very Short Treks', '2023-09-08', '2023-10-04'),
+(14, 'Star Trek: Strange New Worlds', '2022-05-05', null);
 
 INSERT INTO movie (movie_id, title, release_date, stardate) VALUES
 (1, 'Star Trek: The Motion Picture', '1979-12-07', 7410.2),
@@ -1014,6 +1015,30 @@ INSERT INTO episode (episode_id, series_id, title, airdate,
 (929, 13, 'Worst Contact', '2023-09-20', 3, '103'),
 (930, 13, 'Holograms All the Way Down', '2023-09-27', 4, '104'),
 (931, 13, 'Walk, Don’t Run', '2023-10-04', 5, '105');
+
+-- SNW
+INSERT INTO episode (episode_id, series_id, title, airdate, season,
+	                 episode_number, production_code, stardate) VALUES
+(932, 14, 'Strange New Worlds', '2022-05-05', 1, 1, '101', 1739.12),
+(933, 14, 'Children of the Comet', '2022-05-12', 1, 2, '102', 2912.4),
+(934, 14, 'Ghosts of Illyria', '2022-05-19', 1, 3, '103', 1224.3),
+(935, 14, 'Memento Mori', '2022-05-26', 1, 4, '104', 3177.3),
+(936, 14, 'Spock Amok', '2022-06-02', 1, 5, '105', 2341.4),
+(937, 14, 'Lift Us Where Suffering Cannot Reach', '2022-06-09', 1, 6, '106', 1943.7),
+(938, 14, 'The Serene Squall', '2022-06-16', 1, 7, '107', 1997.9),
+(939, 14, 'The Elysian Kingdom', '2022-06-23', 1, 8, '108', 2341.6),
+(940, 14, 'All Those Who Wander', '2022-06-30', 1, 9, '109', 2510.6),
+(941, 14, 'A Quality of Mercy', '2022-07-07', 1, 10, '110', 1457.9),
+(942, 14, 'The Broken Circle', '2023-06-15', 2, 1, '111', 2369.2),
+(943, 14, 'Ad Astra per Aspera', '2023-06-22', 2, 2, '112', 2393.8),
+(944, 14, 'Tomorrow and Tomorrow and Tomorrow', '2023-06-29', 2, 3, '113', 1581.2),
+(945, 14, 'Among the Lotus Eaters', '2023-07-06', 2, 4, '114', 1630.1),
+(946, 14, 'Charades', '2023-07-13', 2, 5, '115', 1789.3),
+(947, 14, 'Lost in Translation', '2023-07-20', 2, 6, '116', 2394.8),
+(948, 14, 'Those Old Scientists', '2023-07-22', 2, 7, '117', '2291.6, 58460.1'),
+(949, 14, 'Under the Cloak of War', '2023-07-27', 2, 8, '118', 1875.4),
+(950, 14, 'Subspace Rhapsody', '2023-08-03', 2, 9, '119', 2398.3),
+(951, 14, 'Hegemony', '2023-08-10', 2, 10, '120', 2344.2);
 
 -- TOS Blu-ray
 INSERT INTO media_set (media_set_id, series_id, type, season) VALUES

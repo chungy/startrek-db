@@ -9,6 +9,7 @@ DROP VIEW IF EXISTS ld;
 DROP VIEW IF EXISTS pic;
 DROP VIEW IF EXISTS pro;
 DROP VIEW IF EXISTS short;
+DROP VIEW IF EXISTS snw;
 DROP VIEW IF EXISTS tas;
 DROP VIEW IF EXISTS tas_bluray;
 DROP VIEW IF EXISTS tng;
@@ -218,6 +219,20 @@ CREATE VIEW short AS
                        WHERE title='Star Trek: Short Treks')
    ORDER BY airdate, episode_number;
 
+CREATE VIEW snw AS
+  SELECT episode_id,
+         title,
+         airdate,
+         season,
+         episode_number,
+         production_code,
+         stardate
+    FROM episode
+   WHERE series_id = (SELECT series_id
+                        FROM series
+                       WHERE title='Star Trek: Strange New Worlds')
+   ORDER BY airdate;
+
 CREATE VIEW tas AS
   SELECT episode_id,
          title,
@@ -389,4 +404,4 @@ CREATE VIEW vshort AS
    WHERE series_id = (SELECT series_id
                         FROM series
                        WHERE title='Star Trek: very Short Treks')
-   ORDER BY airdate, episode_number;
+   ORDER BY airdate;
