@@ -18,6 +18,7 @@ DROP VIEW IF EXISTS tos;
 DROP VIEW IF EXISTS tos_bluray;
 DROP VIEW IF EXISTS tos_dvdr;
 DROP VIEW IF EXISTS tos_hddvd;
+DROP VIEW IF EXISTS vshort;
 DROP VIEW IF EXISTS voy;
 DROP VIEW IF EXISTS voy_dvd;
 DROP TABLE IF EXISTS medium_volume_episode;
@@ -377,3 +378,15 @@ CREATE VIEW voy_dvd AS
                                 FROM series
                                WHERE title='Star Trek: Voyager')
    ORDER BY airdate;
+
+CREATE VIEW vshort AS
+  SELECT episode_id,
+         title,
+         airdate,
+         episode_number,
+         production_code
+    FROM episode
+   WHERE series_id = (SELECT series_id
+                        FROM series
+                       WHERE title='Star Trek: very Short Treks')
+   ORDER BY airdate, episode_number;

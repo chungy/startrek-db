@@ -12,7 +12,8 @@ INSERT INTO series (series_id, title, begin, end) VALUES
 (9, 'Star Trek: Short Treks', '2018-10-04', '2020-01-09'),
 (10, 'Star Trek: Picard', '2020-01-23', '2023-04-20'),
 (11, 'Star Trek: Lower Decks', '2020-08-06', '2024-12-19'),
-(12, 'Star Trek: Prodigy', '2021-10-28', '2024-07-01');
+(12, 'Star Trek: Prodigy', '2021-10-28', '2024-07-01'),
+(13, 'Star Trek: very Short Treks', '2023-09-08', '2023-10-04');
 
 INSERT INTO movie (movie_id, title, release_date, stardate) VALUES
 (1, 'Star Trek: The Motion Picture', '1979-12-07', 7410.2),
@@ -1004,6 +1005,15 @@ INSERT INTO episode (episode_id, series_id, title, airdate, season,
 (924, 12, 'Touch of Grey', '2024-07-01', 2, 18, '218', 62091.1),
 (925, 12, 'Ouroboros, Part I', '2024-07-01', 2, 19, '219', null),
 (926, 12, 'Ouroboros, Part II', '2024-07-01', 2, 20, '220', 62314.8);
+
+-- vshort
+INSERT INTO episode (episode_id, series_id, title, airdate,
+                     episode_number, production_code) VALUES
+(927, 13, 'Skin a Cat', '2023-09-08', 1, '101'),
+(928, 13, 'Holiday Party', '2023-09-13', 2, '102'),
+(929, 13, 'Worst Contact', '2023-09-20', 3, '103'),
+(930, 13, 'Holograms All the Way Down', '2023-09-27', 4, '104'),
+(931, 13, 'Walk, Don’t Run', '2023-10-04', 5, '105');
 
 -- TOS Blu-ray
 INSERT INTO media_set (media_set_id, series_id, type, season) VALUES
