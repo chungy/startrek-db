@@ -4,11 +4,11 @@ This is a database containing metadata for all the episodes and movies
 in the _Star Trek_ franchise.  It can be used to query information
 about episode listings, DVD and Blu-ray contents, release dates, star
 dates, and a few other miscellany.  The database covers all fourteen
-movies released, and classic _Star Trek_ television episodes (this is
-to say, everything through the end of _Star Trek: Enterprise_).  One
-additional, and unofficial, entry is [_Star Trek
-Continues_](https://www.startrekcontinues.com/), because I am a fan of
-this fan-made series.
+movies released, classic _Star Trek_ television episodes, and four
+Kurtzman-era television show episodes (_Discovery_, _Short Treks_,
+_Picard_, and _Lower Decks_).  One additional, and unofficial, entry is
+[_Star Trek Continues_](https://www.startrekcontinues.com/), because I
+am a fan of this fan-made series.
 
 This database is built in [SQLite](https://sqlite.org/), a portable
 and no-install database program contained in a single program, and the
@@ -62,14 +62,9 @@ lot of room to document all of it.
 
 ### Kurtzman-era documenation
 
-As mentioned earlier, only classic _Star Trek_ is represented.  In the
-earlier PostgreSQL version of the database, I had kept updates for
-_Discovery_, _Lower Decks_, and _Picard_, but apathy toward the Alex
-Kurtzman era caused me to become disinterested and I never stuck with
-them to the end of their runs, and likewise did not update the
-PostgreSQL database as episodes came out.  I'll use the Postgres
-version to reference what's in there, and siphon Memory Alpha for the
-rest.
+At present, the Kurtzman-era _Star Trek_ is incomplete.  Documenting
+_Prodigy_, _Strange New Worlds_, and _very Short Treks_ are items on
+the to-do list.
 
 ### GUI/WebUI to interact with the database
 
