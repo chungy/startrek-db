@@ -9,7 +9,8 @@ INSERT INTO series (series_id, title, begin, end) VALUES
 (6, 'Star Trek: Enterprise', '2001-09-26', '2005-05-13'),
 (7, 'Star Trek Continues', '2013-05-26', '2017-11-13'),
 (8, 'Star Trek: Discovery', '2017-09-24', '2024-05-30'),
-(9, 'Star Trek: Short Treks', '2018-10-04', '2020-01-09');
+(9, 'Star Trek: Short Treks', '2018-10-04', '2020-01-09'),
+(10, 'Star Trek: Picard', '2020-01-23', '2023-04-20');
 
 INSERT INTO movie (movie_id, title, release_date, stardate) VALUES
 (1, 'Star Trek: The Motion Picture', '1979-12-07', 7410.2),
@@ -857,7 +858,7 @@ INSERT INTO episode (episode_id, series_id, title, airdate, season,
 (796, 8, 'Lagrange Point', '2024-05-23', 5, 9, '509', null, null),
 (797, 8, 'Life, Itself', '2024-05-30', 5, 10, '510', null, null);
 
--- SHORT
+-- Short Treks
 INSERT INTO episode (episode_id, series_id, title, airdate,
                      season, episode_number) VALUES
 (798, 9, 'Runaway', '2018-10-04', 1, 1),
@@ -870,6 +871,40 @@ INSERT INTO episode (episode_id, series_id, title, airdate,
 (805, 9, 'Ephraim and Dot', '2019-12-12', 2, 4),
 (806, 9, 'The Girl Who Made the Stars', '2019-12-12', 2, 5),
 (807, 9, 'Children of Mars', '2020-01-09', 2, 6);
+
+-- Picard
+INSERT INTO episode (episode_id, series_id, title, airdate, season,
+                     episode_number, production_code, stardate) VALUES
+(808, 10, 'Remembrance', '2020-01-23', 1, 1, '101', null),
+(809, 10, 'Maps and Legends', '2020-01-30', 1, 2, '102a', null),
+(810, 10, 'The End is the Beginning', '2020-02-06', 1, 3, '102b', null),
+(811, 10, 'Absolute Candor', '2020-02-13', 1, 4, '103', null),
+(812, 10, 'Stardust City Rag', '2020-02-20', 1, 5, '104', null),
+(813, 10, 'The Impossible Box', '2020-02-27', 1, 6, '105', null),
+(814, 10, 'Nepenthe', '2020-03-05', 1, 7, '106', null),
+(815, 10, 'Broken Pieces', '2020-03-12', 1, 8, '107', null),
+(816, 10, 'Et in Arcadia Ego, Part 1', '2020-03-19', 1, 9, '108', null),
+(817, 10, 'Et in Arcadia Ego, Part 2', '2020-03-26', 1, 10, '109', null),
+(818, 10, 'The Star Gazer', '2022-03-03', 2, 1, '201', null),
+(819, 10, 'Penance', '2022-03-10', 2, 2, '202', null),
+(820, 10, 'Assimilation', '2022-03-17', 2, 3, '203', null),
+(821, 10, 'Watcher', '2022-03-24', 2, 4, '204', null),
+(822, 10, 'Fly Me to the Moon', '2022-03-31', 2, 5, '205', null),
+(823, 10, 'Two of One', '2022-04-07', 2, 6, '206', null),
+(824, 10, 'Monsters', '2022-04-14', 2, 7, '207', null),
+(825, 10, 'Mercy', '2022-04-21', 2, 8, '208', null),
+(826, 10, 'Hide and Seek', '2022-04-28', 2, 9, '209', null),
+(827, 10, 'Farewell', '2022-05-05', 2, 10, '301', null),
+(828, 10, 'The Next Generation', '2023-02-16', 3, 1, '302', null),
+(829, 10, 'Disengage', '2023-02-23', 3, 2, '303', null),
+(830, 10, 'Seventeen Seconds', '2023-03-02', 3, 3, '304', null),
+(831, 10, 'No Win Scenario', '2023-03-09', 3, 4, '305', 78183.1),
+(832, 10, 'Imposters', '2023-03-16', 3, 5, '306', 78186.03),
+(833, 10, 'The Bounty', '2023-03-23', 3, 6, '307', null),
+(834, 10, 'Dominion', '2023-03-30', 3, 7, '307', null),
+(835, 10, 'Surrender', '2023-04-06', 3, 8, '308', null),
+(836, 10, 'Võx', '2023-04-13', 3, 9, '309', null),
+(837, 10, 'The Last Generation', '2023-04-20', 3, 10, '310', null);
 
 -- TOS Blu-ray
 INSERT INTO media_set (media_set_id, series_id, type, season) VALUES
