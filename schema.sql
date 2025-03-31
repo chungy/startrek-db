@@ -1,5 +1,6 @@
 -- Allow subsequent `make` runs work by dropping existing tables/views
 DROP VIEW IF EXISTS cont;
+DROP VIEW IF EXISTS dis;
 DROP VIEW IF EXISTS ds9;
 DROP VIEW IF EXISTS ds9_dvd;
 DROP VIEW IF EXISTS ent;
@@ -83,6 +84,21 @@ CREATE VIEW cont AS
                         FROM series
                        WHERE title='Star Trek Continues')
    ORDER BY airdate;
+
+CREATE VIEW dis AS
+  SELECT episode_id,
+         title,
+         airdate,
+         season,
+         episode_number,
+         production_code,
+         stardate,
+         date
+    FROM episode
+   WHERE series_id = (SELECT series_id
+                        FROM series
+                       WHERE title='Star Trek: Discovery')
+   ORDER BY airdate, production_code;
 
 CREATE VIEW ds9 AS
   SELECT episode_id,
