@@ -1038,7 +1038,17 @@ INSERT INTO episode (episode_id, series_id, title, airdate, season,
 (948, 14, 'Those Old Scientists', '2023-07-22', 2, 7, '117', '2291.6, 58460.1'),
 (949, 14, 'Under the Cloak of War', '2023-07-27', 2, 8, '118', 1875.4),
 (950, 14, 'Subspace Rhapsody', '2023-08-03', 2, 9, '119', 2398.3),
-(951, 14, 'Hegemony', '2023-08-10', 2, 10, '120', 2344.2);
+(951, 14, 'Hegemony', '2023-08-10', 2, 10, '120', 2344.2),
+(952, 14, 'Hegemony, Part II', '2025-07-17', 3, 1, '121', null),
+(953, 14, 'Wedding Bell Blues', '2025-07-17', 3, 2, '122', 2251.7),
+(954, 14, 'Shuttle to Kenfori', '2025-07-24', 3, 3, '123', 2449.1),
+(955, 14, 'A Space Adventure Hour', '2025-07-31', 3, 4, '124', null),
+(956, 14, 'Through the Lens of Time', '2025-08-07', 3, 5, '125', null),
+(957, 14, 'The Sehlat Who Ate Its Tail', '2025-08-14', 3, 6, '126', null),
+(958, 14, 'What Is Starfleet?', '2025-08-21', 3, 7, '127', null),
+(959, 14, 'Four‐and‐a‐Half Vulcans', '2025-08-28', 3, 8, '128', null),
+(960, 14, 'Terrarium', '2025-09-04', 3, 9, '129', null),
+(961, 14, 'New Life and New Civilizations', '2025-09-11', 3, 10, '130', null);
 
 -- TOS Blu-ray
 INSERT INTO media_set (media_set_id, series_id, type, season) VALUES
