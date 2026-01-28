@@ -207,6 +207,20 @@ CREATE VIEW pro AS
                        WHERE title='Star Trek: Prodigy')
    ORDER BY airdate, episode_number;
 
+CREATE VIEW sa AS
+  SELECT episode_id,
+         title,
+         airdate,
+         season,
+         episode_number,
+         production_code,
+         stardate
+    FROM episode
+   WHERE series_id = (SELECT series_id
+                        FROM series
+                       WHERE title='Star Trek: Starfleet Academy')
+   ORDER BY airdate;
+
 CREATE VIEW short AS
   SELECT episode_id,
          title,

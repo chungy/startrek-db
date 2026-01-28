@@ -14,7 +14,8 @@ INSERT INTO series (series_id, title, begin, end) VALUES
 (11, 'Star Trek: Lower Decks', '2020-08-06', '2024-12-19'),
 (12, 'Star Trek: Prodigy', '2021-10-28', '2024-07-01'),
 (13, 'Star Trek: very Short Treks', '2023-09-08', '2023-10-04'),
-(14, 'Star Trek: Strange New Worlds', '2022-05-05', null);
+(14, 'Star Trek: Strange New Worlds', '2022-05-05', null),
+(15, 'Star Trek: Starfleet Academy', '2026-01-15', null);
 
 INSERT INTO movie (movie_id, title, release_date, stardate) VALUES
 (1, 'Star Trek: The Motion Picture', '1979-12-07', 7410.2),
@@ -1049,6 +1050,14 @@ INSERT INTO episode (episode_id, series_id, title, airdate, season,
 (959, 14, 'Four‐and‐a‐Half Vulcans', '2025-08-28', 3, 8, '128', 3111.1),
 (960, 14, 'Terrarium', '2025-09-04', 3, 9, '129', 2198.7),
 (961, 14, 'New Life and New Civilizations', '2025-09-11', 3, 10, '130', 3165.2);
+
+-- SA
+INSERT INTO episode (episode_id, series_id, title, airdate, season,
+	                 episode_number, production_code, stardate) VALUES
+(977, 15, 'Kids These Days', '2026-01-15', 1, 1, '101', 853724.6),
+(978, 15, 'Beta Test', '2026-01-15', 1, 2, '102', null),
+(979, 15, 'Vitus Reflux', '2026-01-22', 1, 3, '103', 868858.7),
+(980, 15, 'Vox in Excelso', '2026-01-29', 1, 4, '104', null);
 
 -- TOS Blu-ray
 INSERT INTO media_set (media_set_id, series_id, type, season) VALUES
