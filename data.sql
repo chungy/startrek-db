@@ -1057,7 +1057,10 @@ INSERT INTO episode (episode_id, series_id, title, airdate, season,
 (977, 15, 'Kids These Days', '2026-01-15', 1, 1, '101', 853724.6),
 (978, 15, 'Beta Test', '2026-01-15', 1, 2, '102', null),
 (979, 15, 'Vitus Reflux', '2026-01-22', 1, 3, '103', 868858.7),
-(980, 15, 'Vox in Excelso', '2026-01-29', 1, 4, '104', null);
+(980, 15, 'Vox in Excelso', '2026-01-29', 1, 4, '104', null),
+(981, 15, 'Series Acclimation Mil', '2026-02-05', 1, 5, '105', null),
+(982, 15, 'Come, Let’s Away', '2026-02-12', 1, 6, '106', null),
+(983, 15, 'Ko’Zeine', '2026-02-19', 1, 7, '107', null);
 
 -- TOS Blu-ray
 INSERT INTO media_set (media_set_id, series_id, type, season) VALUES
