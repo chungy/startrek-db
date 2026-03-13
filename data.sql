@@ -1054,13 +1054,16 @@ INSERT INTO episode (episode_id, series_id, title, airdate, season,
 -- SA
 INSERT INTO episode (episode_id, series_id, title, airdate, season,
 	                 episode_number, production_code, stardate) VALUES
-(977, 15, 'Kids These Days', '2026-01-15', 1, 1, '101', 853724.6),
-(978, 15, 'Beta Test', '2026-01-15', 1, 2, '102', null),
-(979, 15, 'Vitus Reflux', '2026-01-22', 1, 3, '103', 868858.7),
-(980, 15, 'Vox in Excelso', '2026-01-29', 1, 4, '104', null),
-(981, 15, 'Series Acclimation Mil', '2026-02-05', 1, 5, '105', null),
-(982, 15, 'Come, Let’s Away', '2026-02-12', 1, 6, '106', null),
-(983, 15, 'Ko’Zeine', '2026-02-19', 1, 7, '107', null);
+(978, 15, 'Kids These Days', '2026-01-15', 1, 1, '101', 853724.6),
+(979, 15, 'Beta Test', '2026-01-15', 1, 2, '102', null),
+(980, 15, 'Vitus Reflux', '2026-01-22', 1, 3, '103', 868858.7),
+(981, 15, 'Vox in Excelso', '2026-01-29', 1, 4, '104', null),
+(982, 15, 'Series Acclimation Mil', '2026-02-05', 1, 5, '105', null),
+(983, 15, 'Come, Let’s Away', '2026-02-12', 1, 6, '106', null),
+(984, 15, 'Ko’Zeine', '2026-02-19', 1, 7, '107', null),
+(985, 15, 'The Life of the Stars', '2026-02-26', 1, 8, '108', 869372.1),
+(986, 15, '300th Night', '2026-03-05', 1, 9, '109', null),
+(987, 15, 'Rubicon', '2026-03-12', 1, 10, '110', 869631.7);
 
 -- TOS Blu-ray
 INSERT INTO media_set (media_set_id, series_id, type, season) VALUES
