@@ -39,7 +39,7 @@ CREATE TABLE episode (
        season INTEGER,
        episode_number INTEGER,
        production_code TEXT,
-       stardate FLOAT,
+       stardate TEXT,
        date DATETIME,
        vignette BOOLEAN
 );
