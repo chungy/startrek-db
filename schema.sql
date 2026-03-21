@@ -67,7 +67,7 @@ CREATE TABLE movie (
        movie_id INTEGER PRIMARY KEY,
        title TEXT NOT NULL,
        release_date DATETIME NOT NULL,
-       stardate NUMERIC
+       stardate TEXT
 );
 
 CREATE TABLE series (
