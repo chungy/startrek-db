@@ -40,12 +40,11 @@ This is a [Fossil](https://fossil-scm.org/) repository, and may be
 cloned (having `fossil` in your `$PATH`) by:
 
 ```
-$ fossil clone https://chiselapp.com/user/chungy/repository/startrek-db
+$ fossil clone https://fossil.chungy.name/startrek-db
 ```
 
 If you are viewing this on GitHub, know the upstream forge is at the
-[above
-link](https://chiselapp.com/user/chungy/repository/startrek-db).
+[above link](https://fossil.chungy.name/startrek-db).
 
 ## Future plans
 
